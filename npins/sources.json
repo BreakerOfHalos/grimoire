@@ -1,0 +1,23 @@
+{
+  "pins": {
+    "nixos-facter-modules": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/nixos-facter-modules.git"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "14df13c84552a7d1f33c1cd18336128fbc43f920",
+      "url": null,
+      "hash": "sha256-uP9Xxw5XcFwjX9lNoYRpybOnIIe1BHfZu5vJnnPg3Jc="
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre818960.076e8c6678d8/nixexprs.tar.xz",
+      "hash": "sha256-EH+3V8xT2zi2Vr8QLPyE705K5HspYMipvguJVXWOkB8="
+    }
+  },
+  "version": 6
+}

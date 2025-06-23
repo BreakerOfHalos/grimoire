@@ -1,5 +1,29 @@
 {
   "pins": {
+    "disko": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/disko.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "7f1857b31522062a6a00f88cbccf86b43acceed1",
+      "url": null,
+      "hash": "sha256-KrC9iOVYIn6ukpVlHbqSA4hYCZ6oDyJKrcLqv4c5v84="
+    },
+    "nix-maid": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/viperML/nix-maid.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "5f5c84256dfba42ac7786fd3ef17849ac0c7b788",
+      "url": null,
+      "hash": "sha256-0U8yfhCjpcuQq5057UukuPsUtbW9OyIL/a+J/M4MI3Y="
+    },
     "nixos-facter-modules": {
       "type": "Git",
       "repository": {
@@ -17,6 +41,30 @@
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre818960.076e8c6678d8/nixexprs.tar.xz",
       "hash": "sha256-EH+3V8xT2zi2Vr8QLPyE705K5HspYMipvguJVXWOkB8="
+    },
+    "wrapper-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/viperML/wrapper-manager.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "238d49c10383cd1db56d694bff9d573684c71526",
+      "url": null,
+      "hash": "sha256-H7aKzVWtX2Efp8DwCuMrZex+IiXII2/PF5rO+Mu5oYU="
+    },
+    "zen-browser-flake": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/youwen5/zen-browser-flake.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "18d6cd2f5a9cd1527d478d4f716e9b9ee6fb6cbb",
+      "url": null,
+      "hash": "sha256-wce+erYDBm6wpLJm6IJh85KYqy/NtdKp6DZQCn4YP1Q="
     }
   },
   "version": 6

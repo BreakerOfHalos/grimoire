@@ -12,6 +12,21 @@
       "url": null,
       "hash": "sha256-KrC9iOVYIn6ukpVlHbqSA4hYCZ6oDyJKrcLqv4c5v84="
     },
+    "lix": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://git.lix.systems/lix-project/lix.git"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "2.93.0",
+      "revision": "47aad376c87e2e65967f17099277428e4b3f8e5a",
+      "url": null,
+      "hash": "sha256-hsFe4Tsqqg4l+FfQWphDtjC79WzNCZbEFhHI8j2KJzw="
+    },
     "nix-maid": {
       "type": "Git",
       "repository": {
@@ -35,6 +50,21 @@
       "revision": "14df13c84552a7d1f33c1cd18336128fbc43f920",
       "url": null,
       "hash": "sha256-uP9Xxw5XcFwjX9lNoYRpybOnIIe1BHfZu5vJnnPg3Jc="
+    },
+    "nixos-module": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://git.lix.systems/lix-project/nixos-module.git"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "2.93.0",
+      "revision": "cd2a9c028df820a83ca2807dc6c6e7abc3dfa7fc",
+      "url": null,
+      "hash": "sha256-11R4K3iAx4tLXjUs+hQ5K90JwDABD/XHhsM9nkeS5N8="
     },
     "nixpkgs": {
       "type": "Channel",

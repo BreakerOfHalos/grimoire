@@ -1,9 +1,5 @@
-let
-  sources = import ../../npins;
-  lib = import "${sources.nixpkgs}/lib";
-in
-import sources.nixpkgs {
-  config = {
+{
+  nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = _: true;
     allowVariants = false;
@@ -12,8 +8,4 @@ import sources.nixpkgs {
     allowUnsupportedSystems = true;
     allowAliases = false;
   };
-
-  overlays = [
-    (import ./overlay.nix lib)
-  ];
 }

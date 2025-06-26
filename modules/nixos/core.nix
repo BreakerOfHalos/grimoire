@@ -3,19 +3,11 @@
   pkgs,
   ...
 }:
-let
-  inherit (lib)
-    mkDefault
-    mkForce
-    getExe
-    concatStringSep
-    ;
-in
 {
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = mkDefault "America/Los_Angeles";
-  hardware.bluetooth.enable = mkDefault true;
+  hardware.bluetooth.enable = lib.mkDefault true;
   networking.networkmanager.enable = true;
   users.mutableUsers = false;
 
@@ -60,10 +52,10 @@ in
   };
 
   services = {
-    automatic-timezoned.enable = mkForce true;
+    automatic-timezoned.enable = lib.mkForce true;
 
     geoclue2 = {
-      enable = mkDefault true;
+      enable = lib.mkDefault true;
       geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
       appConfig.gammastep = {
         isAllowed = true;

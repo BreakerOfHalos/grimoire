@@ -3,7 +3,22 @@
   lib,
 }:
 let
+  user = "heretics";
+
   sources = import ../../npins;
+
+  NIX_PATH =
+    let
+      entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
+    in
+    "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
+  # Near as I can tell, this exposes all the sources in all other modules.
+  specialArgs = {
+    inherit
+      sources
+      user
+      ;
+  };
 
   # This *should* properly assemble lix and make it the package that we're using.
   lix-package = import "${sources.nixos-module}/module.nix" { ${source.lix} };
@@ -13,7 +28,9 @@ in {
 
     # This *should* give us the same packages in nix-shell and nix shell
     # It works by pinning the NIX_PATH to refer the the flake registry on the machine
-    nixpkgs.flake.source = sources.nixpkgs;
+    # EDIT: Following https://codeberg.org/kiara/dots/src/commit/6814db82b4857d0f3c7cedaa44af2bf7cad8a121/system/default.nix
+    # this is changed to not only look at nixpgs, but all the pins in `sources`.
+    nix.nixPath = [ NIX_PATH ];
 
     # Killing channels per https://jade.fyi/blog/pinning-nixos-with-npins/
     channel.enable = false;

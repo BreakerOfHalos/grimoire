@@ -1,0 +1,16 @@
+hotkey-overlay {
+	skip-at-startup
+}
+environment {
+	GTK_USE_PORTAL "0"
+	GTK_DEBUG "no-portals"
+}
+input {
+	keyboard {
+		xkb {
+			layout "us"
+		}
+	}
+}
+
+spawn-at-startup "sh" "-c" "${pkgs.greetd.regreet}/bin/regreet; pkill -f niri"

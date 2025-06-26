@@ -3,8 +3,6 @@
   lib,
 }:
 let
-  user = "heretics";
-
   sources = import ../../npins;
 
   NIX_PATH =
@@ -15,9 +13,7 @@ let
   # Near as I can tell, this exposes all the sources in all other modules.
   specialArgs = {
     inherit
-      sources
-      user
-      ;
+      sources;
   };
 
   # This *should* properly assemble lix and make it the package that we're using.

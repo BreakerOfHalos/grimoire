@@ -22,17 +22,6 @@ in
     extraPortals = [ 
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
-   ];
-
-    wlr = {
-      enable = mkDefault config.grimoire.profiles.graphical.enable;
-      settings = {
-        screencast = {
-          max_fps = 60;
-          chooser_type = "simple";
-          chooser_cmd = "${getExe pkgs.slurp} -f %o -or";
-        };
-      };
-    };
+    ];
   };
 }

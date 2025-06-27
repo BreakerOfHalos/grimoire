@@ -50,17 +50,4 @@
     dconf.enable = true;
     seahorse.enable = true;
   };
-
-  services = {
-    automatic-timezoned.enable = lib.mkForce true;
-
-    geoclue2 = {
-      enable = lib.mkDefault true;
-      geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
-      appConfig.gammastep = {
-        isAllowed = true;
-        isSystem = true;
-      };
-    };
-  };
 }

@@ -17,6 +17,13 @@ let
   };
 
   ifTheyExist = config: groups: lib.filter (group: lib.hasAttr group config.users.groups) groups;
+
+  mkPub = host: key: {
+    "${host}-${key.type}" = {
+    hostNames = [ host ];
+    publicKey = "ssh-${key.type} ${key.key}";
+    };
+  };
 in
 {
   inherit

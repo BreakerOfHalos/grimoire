@@ -6,7 +6,6 @@
 }:
 let
   inherit (lib) mkMerge;
-  inherit (self.lib) mkPubs;
 in
 {
   boot.initrd.network.ssh.authorizedKeys = [
@@ -84,7 +83,7 @@ in
 
     # find these with `ssh-keyscan <hostname>`
     knownHosts = mkMerge [
-      (mkPubs "github.com" [
+      (grimoireLib.mkPubs "github.com" [
         {
           type = "rsa";
           key = 

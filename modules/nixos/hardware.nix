@@ -13,11 +13,6 @@ in
   
   options.grimoire = {
     device = {
-      hasBluetooth = lib.mkOption {
-        type = bool;
-        default = true;
-        description = "Whether or not the system has bluetooth support";
-
       monitors = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ];
@@ -26,13 +21,6 @@ in
           declaring things like monitors in window manager configurations
           you can avoid declaring this, but I'd rather if you did declare
         '';
-      };
-
-      keyboard = lib.mkOption {
-        type = lib.types.enum [
-          "us"
-        ];
-        default = "us";
       };
 
       hasTPM = lib.mkOption {
@@ -45,14 +33,9 @@ in
     system.yubikeySupport = {
       enable = lib.mkEnableOption "yubikey support";
     };
-    
-    system.bluetooth.enable = lib.mkEnableOption "Should the device load bluetooth drivers and enable blueman";
   };
 
   config = lib.mkMerge [
-
-    { hardware.enableRedistributableFirmware = true; }
-
     {
       # discard blocks that are not in use by the filesystem, good for SSDs health
       services.fstrim = {
@@ -70,27 +53,6 @@ in
       };
     })
  
-    (lib.mkIf sys.bluetooth.enable {
-      grimoire.system.boot.extraKernelParams = [ "btusb" ];
-
-      hardware.bluetooth = {
-        enable = true;
-        package = pkgs.bluez;
-        #hsphfpd.enable = true;
-        powerOnBoot = true;
-        disabledPlugins = [ "sap" ];
-        settings = {
-          General = {
-            JustWorksRepairing = "always";
-            MultiProfile = "multiple";
-          };
-        };
-      };
-
-      # https://wiki.nixos.org/wiki/Bluetooth
-      services.blueman.enable = true;
-    });
-
     (lib.mkIf config.grimoire.device.hasTPM {
       security.tpm2 = {
         # enable Trusted Platform Module 2 support

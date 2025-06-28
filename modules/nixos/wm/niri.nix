@@ -87,8 +87,6 @@ in
 
     
       niri.enable = true;
-      dconf.enable = true;
-      seahorse.enable = true;
 
       hyperlock = {
         enable = true;
@@ -165,20 +163,6 @@ in
           ];
         };
       };
-    };
-
-    xdg.portal = {
-      enable = true;
-      config.common = {
-        default = [ "gtk" ];
-
-        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-      };
-
-      extraPortals= [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-gnome
-      ];
     };
 
     environment.sessionVariable = {

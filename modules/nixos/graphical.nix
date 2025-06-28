@@ -7,6 +7,9 @@
 }:
 let
   cfg = config.grimoire.profiles.graphical;
+
+  cfg.gtk-theme = "Tokyonight-Dark";
+  cfg.xcursor = "Nordzy-catppuccin-macchiato-teal";
 in
 {
   config = mkIf cfg.enable {
@@ -24,6 +27,12 @@ in
 
     location.provider = "geoclue2";
 
+    qt = {
+      enabme = true;
+      platformTheme = "gnome";
+      style = "adwaita-dark";
+    };
+
     environment.systemPackages = with pkgs; [
       # CLI base tools
       usbutils
@@ -31,11 +40,13 @@ in
 
       # Themeing and aesthetics
       tokyonight-gtk-theme
+      nordzy-cursor-theme
 
       #GUI
       zellij
       alacritty
       xwayland-satellite
+      nautilus # for file picker dialogs
     ];
 
     programs = {
@@ -47,25 +58,27 @@ in
 
       # GNOME's keyring manager
       seahorse.enable = true;
+
+      # We need something to manage idle, and hypridle seems fine.
+      hypridle.enable = true;
+
+      # And a screen locker
+      hyprlock.enable = true;
       
       regreet = {
         enable = true;
         theme = {
-          package = pkgs.toykonight-gtk-theme;
-          name = "Tokyonight-Dark";
+          name = cfg.gtk-theme;
         };
         iconTheme = {
-          package = pkgs.tokyonight-gtk-theme;
-          name = "Dark-Cyan";
+          name = cfg.gtk-theme;
         };
         cursorTheme = {
-          package = pkgs.nordzy-cursor-theme;
-          name = "Nordzy-cursors";
+          name = cfg.xcursor;
         };
         settings = {
           background.path = "~/Pictures/wallpapers/estradiol.png";
           widget.clock.format = "%a %Y-%m-%d %H:%M";
-          appearance.greeting_msg = "Yippe-ki-yay, motherfucker.";
         };
       };
 
@@ -73,11 +86,11 @@ in
         enable = true;
         config = {
           main = {
-            gtk-theme = "Tokyonight-Dark";
+            gtk-theme = cfg.gtk-theme;
             idle-hide = true;
             idle-timeout = 45;
             follow-focus = true;
-            date-format = "%Y-%m-%d";
+            date-format = "%a %Y-%m-%d";
             time-format = "%H:%M";
           };
         };

@@ -15,23 +15,9 @@ in
   networking.networkmanager.enable = true;
   users.mutableUsers = false;
 
-  environment.systemPackages = with pkgs; lib.mkMerge [
-
-    (lib.mkIf prof.graphical.enable {
-      # CLI tools for workstations, not cluster machines
-      usbutils
-      pciutils
-      mako
-
-      # GUI, obvi
-      alacritty
-      zellij
-      tokyonight-gtk-theme
-    })
-    
-    (# CLI base tools
+  environment.systemPackages = with pkgs; [
+    # CLI base tools
       uutils-coreutils-noprefix
-    )
   ];
 
   programs = {
@@ -40,10 +26,6 @@ in
     };
 
     direnv.enable = true;
-  };
-
-  services.automatic-timezoned = {
-    enable = lib.mkIf prof.graphical.enable;
   };
 
   zramSwap = {

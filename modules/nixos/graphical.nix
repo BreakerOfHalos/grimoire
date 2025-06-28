@@ -1,0 +1,193 @@
+{
+  lib,
+  grimoireLib,
+  pkgs,
+  config,
+  ...
+}:
+let
+  cfg = config.grimoire.profiles.graphical;
+in
+{
+  config = mkIf cfg.enable {
+    
+    environment.sessionVariable = {
+      NIXOS_OZONE_WL = "1";
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+      GDK_BACKEND = "wayland,x11";
+      ANKI_WAYLAND = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      XDG_SESSION_TYPE = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      CLUTTER_BACKEND = "wayland";
+    };
+
+    location.provider = "geoclue2";
+
+    environment.systemPackages = with pkgs; [
+      # CLI base tools
+      usbutils
+      pciutils
+
+      # Themeing and aesthetics
+      tokyonight-gtk-theme
+
+      #GUI
+      zellij
+      alacritty
+      xwayland-satellite
+    ];
+
+    programs = {
+      # Enable our chosen window manager
+      niri.enable = true;
+          
+      # We need dconf to interact with gtk
+      dconf.enable = true;
+
+      # GNOME's keyring manager
+      seahorse.enable = true;
+      
+      regreet = {
+        enable = true;
+        theme = {
+          package = pkgs.toykonight-gtk-theme;
+          name = "Tokyonight-Dark";
+        };
+        iconTheme = {
+          package = pkgs.tokyonight-gtk-theme;
+          name = "Dark-Cyan";
+        };
+        cursorTheme = {
+          package = pkgs.nordzy-cursor-theme;
+          name = "Nordzy-cursors";
+        };
+        settings = {
+          background.path = "~/Pictures/wallpapers/estradiol.png";
+          widget.clock.format = "%a %Y-%m-%d %H:%M";
+          appearance.greeting_msg = "Yippe-ki-yay, motherfucker.";
+        };
+      };
+
+      gtklock = {
+        enable = true;
+        config = {
+          main = {
+            gtk-theme = "Tokyonight-Dark";
+            idle-hide = true;
+            idle-timeout = 45;
+            follow-focus = true;
+            date-format = "%Y-%m-%d";
+            time-format = "%H:%M";
+          };
+        };
+      };
+    };
+
+    services = {
+
+      # Disable chrony in favor of systemd-timesyncd
+      timesyncd.enable = lib.mkDefault true;
+      chrony.enable = lib.mkDefault false;
+
+      # Enable GVFS a userspace virtual filesystem
+      gvfs.enable = true;
+
+      # Storage daemon required for udiskie auto-mount
+      udisks2.enable = true;
+
+      udev.packages = [ pkgs.gnome-settings-daemon ];
+
+      gnome = {
+        glib-networking.enable = true;
+
+        # Using the newer gcr instead of gnome-keyring
+        gcr-ssh-agent.enable = true;
+
+        # GNOME assisstive tech framework
+        at-spi2-core.enable = true;
+
+        # simply unneccessary
+        gnome-remote-desktop.enable = lib.mkForce false;
+      };
+
+      geoclue2 = {
+        enable = true;
+        geoProviderUrl = "https://beacondb.net/v1/geolocate";
+        submissionUrl = "https://beacondb.net/v2/geosubmit";
+        submissionNick = "geoclue";
+
+        appConfig.gammastep = {
+          isAllowed = true;
+          isSystem = false;
+        };
+      };
+
+      # Enabling greetd as the display manager
+      greetd = let
+        niri-config = pkgs.writeText "niri-config" ''
+      hotkey-overlay {
+          skip-at-startup
+      }
+      environment {
+          GTK_USE_PORTAL "0"
+          GDK_DEBUG "no-portals"
+      }
+
+      // other settings
+
+      spawn-at-startup "sh" "-c" "${pkgs.greetd.regreet}/bin/regreet; pkill -f niri"
+      '';
+      in {
+        enable = true;
+        vt = 2;
+        restart = true;
+
+        settings = {
+          default_session = {
+            user = "greeter";
+            command = "niri -c ${niri-config}";
+          };
+          initial_session = {
+            command = "niri-session";
+            user = "heretics"
+          };
+        };
+      };
+
+      dbus = {
+        enable = true;
+        # Use the faster dbus-broker instead of the classic dbus-daemon
+        implementation = "broker";
+
+        packages = lib.builtins.attrvalues { inherit (pkgs) dconf gcr udisks2; };
+      };
+    };
+
+    systemd.services.seatd = {
+      enable = true; 
+      description = "Seat management daemon";
+      script = "${getExe pkgs.seatd} -g wheel";
+      serviceConfig = {
+        Type = "simple";
+        Restart = "always";
+        RestartSec = "1";
+      };
+      wantedBy = [ "multi-user.target" ];
+    };
+
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config.common = {
+        default = [ "gtk" "gnome" ];
+        "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+        "org.freedesktop.impl.portal.Screenshot" = "gnome";
+      };
+      extraPortals = [
+        pkgs.xdg-portal-gtk
+        pkgs.xdg-portal-gnome
+      ];
+    };
+  };
+}

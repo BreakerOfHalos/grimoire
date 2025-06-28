@@ -25,31 +25,6 @@
 
       systemd.enable = true;
 
-      kernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "btrfs"
-        "sd_mod"
-        "dm_mod"
-      ];
-
-      availableKernelModules = [
-        "vmd"
-        "usbhid"
-        "sd_mod"
-        "sr_mod"
-        "dm_mod"
-        "uas"
-        "usb_storage"
-        "rtsx_usb_sdmmc"
-        "rtsx_pci_sdmmc" # Realtek SD card interface (btw i hate realtek)
-        "ata_piix"
-        "virtio_pci"
-        "virtio_scsi"
-        "ehci_pci"
-      ];
-
       compressor = "zstd";
       compressorArgs = [
         "-19"

@@ -47,6 +47,7 @@ in
       alacritty
       xwayland-satellite
       nautilus # for file picker dialogs
+      fuzzel
     ];
 
     programs = {

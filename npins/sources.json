@@ -1,5 +1,17 @@
 {
   "pins": {
+    "agenix": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/ryantm/agenix.git"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "531beac616433bac6f9e2a19feb8e99a22a66baf",
+      "url": null,
+      "hash": "sha256-9P1FziAwl5+3edkfFcr5HeGtQUtrSdk/MksX39GieoA="
+    },
     "disko": {
       "type": "Git",
       "repository": {

@@ -1,12 +1,4 @@
-{
-  config,
-  lib,
-}:
-let
-
-  # This *should* properly assemble lix and make it the package that we're using.
-  imports = [ import "${sources.nixos-module}/module.nix" { lix = ${source.lix}; } ];
-in {
+{ config, lib }: {
   nix = {
     # This *should* give us the same packages in nix-shell and nix shell
     # It works by pinning the NIX_PATH to refer the the flake registry on the machine

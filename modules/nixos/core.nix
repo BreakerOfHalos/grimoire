@@ -29,6 +29,16 @@ in
     "${disko}/module.nix"
     "${nixos-facter-modules}/modules/nixos/facter.nix"
     nix-maid.nixosModules.default
+    ./lib.nix
+    ./core.nix
+    ./graphical.nix
+    ./laptop.nix
+    ./headless.nix
+    ./security.nix
+    ./hardware.nix
+    ./users.nix
+    ./system
+    ./networking
   ];
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -36,6 +46,7 @@ in
   hardware.bluetooth.enable = lib.mkIf prof.graphical.enable;
   networking.networkmanager.enable = true;
   users.mutableUsers = false;
+  fonts.enableDefaultPackages = true;
 
   environment.systemPackages = with pkgs; [
     # CLI base tools

@@ -1,1 +1,3 @@
-result
+# Ignore nixos build outputs
+result*
+.direnv/

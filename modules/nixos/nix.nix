@@ -3,18 +3,6 @@
   lib,
 }:
 let
-  sources = import ../../npins;
-
-  NIX_PATH =
-    let
-      entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
-    in
-    "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
-  # Near as I can tell, this exposes all the sources in all other modules.
-  specialArgs = {
-    inherit
-      sources;
-  };
 
   # This *should* properly assemble lix and make it the package that we're using.
   imports = [ import "${sources.nixos-module}/module.nix" { lix = ${source.lix}; } ];

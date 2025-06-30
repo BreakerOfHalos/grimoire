@@ -1,13 +1,35 @@
-{
-  lib,
-  pkgs,
-  grimoireLib,
-  ...
-}:
+{ lib
+, pkgs
+, ... }:
 let
+  user = "heretics";
+  
+  sources = import ../../npins;
+  disko = sources.disko;
+  nix-maid = sources.nix-maid;
+  nixos-facter-modules = sources.nixos-facter-modules;
+
   prof = config.grimoire.profiles;
+
+  NIX_PATH =
+    let
+      entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
+    in
+    "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
+  # Near as I can tell, this exposes all the sources in all other modules.
+  specialArgs = {
+    inherit
+      sources
+      user
+      ;
+  };
 in
 {
+  imports = [
+    "${disko}/module.nix"
+    "${nixos-facter-modules}/modules/nixos/facter.nix"
+    nix-maid.nixosModules.default
+  ];
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = mkDefault "America/Los_Angeles";
@@ -18,6 +40,8 @@ in
   environment.systemPackages = with pkgs; [
     # CLI base tools
       uutils-coreutils-noprefix
+      rage
+      age-plugin-1p
   ];
 
   programs = {
@@ -25,6 +49,8 @@ in
       enable = prof.gaming.enable;
     };
 
+    _1password.enabe = true;
+    _1password-gui.enable = true;
     direnv.enable = true;
   };
 

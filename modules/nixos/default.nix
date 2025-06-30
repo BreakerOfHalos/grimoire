@@ -2,7 +2,7 @@
 , pkgs
 , ... }:
 let
-  user = "heretics";
+  user = "breakerofhalos";
   
   sources = import ../../npins;
   disko = sources.disko;

@@ -3,6 +3,8 @@
 , ... }:
 let
   user = "breakerofhalos";
+
+  pkgs = import ../../packages;
   
   sources = import ../../npins;
   disko = sources.disko;

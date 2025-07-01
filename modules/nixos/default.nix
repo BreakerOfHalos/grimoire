@@ -13,11 +13,11 @@ let
 
   prof = config.grimoire.profiles;
 
-  # NIX_PATH =
-  #   let
-  #     entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
-  #   in
-  #   "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
+  NIX_PATH =
+    let
+      entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
+    in
+    "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
   # Near as I can tell, this exposes all the sources in all other modules.
   specialArgs = {
     inherit
@@ -49,6 +49,7 @@ in
   networking.networkmanager.enable = true;
   users.mutableUsers = false;
   fonts.enableDefaultPackages = true;
+  nix.nixPath = [ NIX_PATH ];
 
   environment.systemPackages = with pkgs; [
     # CLI base tools

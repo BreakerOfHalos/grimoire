@@ -32,6 +32,9 @@ let
     #     lixSrc = import sources.lix;
     #   in final { imports = [ lixModule { lix = lixSrc; } ]; };
 
+    nix = prev.nix;
+    lix = prev.lix;
+
     maid = (import sources.nix-maid) final ../modules/maid;
 
     zen-browser = ((import sources.zen-browser-flake) { pkgs = final; }).zen-browser;

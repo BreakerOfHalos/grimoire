@@ -1,5 +1,4 @@
-{ grimoireLib }:
-{ pkgs ? import <nixpkgs> {}, lib }:
+{ lib }:
 let
   primaryMonitor = config: builtins.elemAt config.grimoire.device.monitors 0;
 
@@ -33,55 +32,5 @@ let
   XDG_RUNTIME_DIR = "/run/user/$UID";
 in
 {
-  inherit
-    primaryMonitor
-    mkProgram
-    mkGraphicalService
-    ifTheyExist
-    ;
-
-    simple = {
-      dataHome = XDG_DATA_HOME;
-      configHome = XDG_CONFIG_HOME;
-      cacheHome = XDG_CACHE_HOME;
-    };
-
-  xdg-template = {
-    # global env
-    global = {
-      inherit
-        XDG_CONFIG_HOME
-        XDG_CACHE_HOME
-        XDG_DATA_HOME
-        XDG_STATE_HOME
-        XDG_BIN_HOME
-        XDG_RUNTIME_DIR
-        ;
-      PATH = [ "$bin" ];
-    };
-
-    user =
-      xdg:
-      let
-        data = xdg.dataHome;
-        config = xdg.configHome;
-        cache = xdg.cacheHome;
-      in
-      {
-        # desktop
-        XCOMPOSECACHE = "${cache}/X11/xcompose";
-        ERRFILE = "${cache}/X11/xsession-errors";
-        WINEPREFIX = "${data}/wine";
-
-        # programs
-        GNUPGHOME = "${data}/gnupg";
-        LESSHISTFILE = "${data}/less/history";
-        INPUTRC = "${config}/readline/inputrc";
-        MPLAYER_HOME = "${config}/mplayer";
-
-        # programming
-        IPYTHONDIR = "${config}/ipython";
-        JUPYTER_CONFIG_DIR = "${config}/jupyter";
-      };
-  };
-}   
+  
+}

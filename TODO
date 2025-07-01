@@ -1,0 +1,35 @@
+- [ ] Clean up the lib and xdg templates
+	- It's failing to build because the fuction wasn't doing anything.
+	- It needs outputs, and to expose the xdg templates in a usable way.
+	- There's a possiblity that I'm not reusing any of the code,
+	- so it's not really a lib, it's just unimportant abstraction.
+- [ ] Set up basic configs for my programs in maid.
+	- [ ] Look at Hanna's configs.
+		- maid lets me borrow directly from standard style configs.
+- [ ] Look into changing keybinds based on input device. Might be impractical.
+ 	- Possibly a conditional layer on a keyboard? Or temporary input remaps?
+- [ ] Hide the font sources so I can share the config.
+	- Use agenix to hide the download links as secrets, download the folders
+	- and install.
+	- [ ] Long term, rewrite the code so it handles the zip file directly
+		- Good for updates in this case. This would have also been the solution
+		- for the Talon updates. I see why proprietary software is a pain to pkg.
+- [ ] Map more stuff into the config framework like Isabel.
+	- I see the point now, and the power it gives once you understand the
+	- framework. I should document it. It will make setting up lab machines
+	- much easier, and I don't have to fight the flake bullshit about
+	- multiple architechtures, or use extra frameworks. I think I can make
+	- it work with a little bit of code. The imports into the default hosts
+	- file makes sense, mostly. The issue that I have is that I don't want
+	- to have to drill down into the hosts subdirectory to call a script
+	- that's the same in all of them, to originate the config.
+	- [ ] Top level configuration.nix that pulls the pieces together and maps it.
+		- This should be doable, with some shell scripting. Maybe I pass the
+		- hostname into the config? I don't want Nix to have to slowly parse
+		- all the hosts and the whole tree just to assemble one single machine.
+		- In other words, leaving the choice logic to nix seems less efficient.
+		- I could be wrong, and I don't like leaving a piece as variable.
+	- [ ] Remote builds also make this less of an issue.
+		- Build on the powerful machine, and then it's cached binaries. This
+		- appeals, so it only *truly* builds the binaries once. I still have no
+		- clue how it works, or how to test it atm.

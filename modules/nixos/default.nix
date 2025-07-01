@@ -1,14 +1,18 @@
 { lib
 , pkgs
+, config
+, grimioreLib
 , ... }:
 let
   user = "breakerofhalos";
 
   pkgs = import ../../packages;
+
+  grimoireLib = ./lib.nix;
   
   sources = import ../../npins;
   disko = sources.disko;
-  nix-maid = sources.nix-maid;
+  nix-maid = import sources.nix-maid;
   nixos-facter-modules = sources.nixos-facter-modules;
 
   prof = config.grimoire.profiles;
@@ -23,6 +27,7 @@ let
     inherit
       sources
       user
+      grimoireLib
       ;
   };
 in
@@ -44,7 +49,7 @@ in
   ];
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
-  time.timeZone = mkDefault "America/Los_Angeles";
+  time.timeZone = lib.mkDefault "America/Los_Angeles";
   hardware.bluetooth.enable = lib.mkIf prof.graphical.enable;
   networking.networkmanager.enable = true;
   users.mutableUsers = false;

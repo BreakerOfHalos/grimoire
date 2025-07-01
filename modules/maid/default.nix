@@ -9,10 +9,10 @@
     ./firefox
     ./fish
     ./helix
+    ./hypr
     ./mako
     ./niri
     ./quickshell
-    ./screenlocker
     ./starship
     # ./wallpapers does not get imported because it's just assets
     ./yazi

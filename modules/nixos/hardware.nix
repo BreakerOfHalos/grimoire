@@ -71,7 +71,7 @@ in
       };
 
       boot.initrd.kernelModules = [ "tpm" ];
-    });
+    })
 
     (lib.mkIf config.grimoire.system.yubikeySupport.enable {
       hardware.gpgSmartcards.enable = true;
@@ -97,6 +97,6 @@ in
           # yubikey-manager-qt # gui
           ;
       };
-    };
+    })
   ];
 }

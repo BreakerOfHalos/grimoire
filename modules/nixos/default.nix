@@ -36,8 +36,10 @@ in
     "${disko}/module.nix"
     "${nixos-facter-modules}/modules/nixos/facter.nix"
     nix-maid.nixosModules.default
+    ./boot.nix
     ./security.nix
     ./hardware.nix
+    ./nix.nix
     ./users.nix
     ./system
     ./networking

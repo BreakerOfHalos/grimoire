@@ -1,4 +1,7 @@
-{ lib, config, ... }:
+{ lib
+, config
+, pkgs
+, ... }:
 let
   inherit (lib) mkIf mkMerge genAttrs;
 

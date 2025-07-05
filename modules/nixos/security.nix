@@ -10,7 +10,7 @@ let
     "regreet"
   ];
 
-  lib.mkService = {
+  mkService = {
     enableGnomeKeyring = true;
     gnupg = {
       enable = true;

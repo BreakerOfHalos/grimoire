@@ -3,8 +3,6 @@
 , pkgs
 , ... }:
 let
-  inherit (lib) mkIf mkMerge genAttrs;
-
   services = [
     "login"
     "greetd"
@@ -12,7 +10,7 @@ let
     "regreet"
   ];
 
-  mkService = {
+  lib.mkService = {
     enableGnomeKeyring = true;
     gnupg = {
       enable = true;
@@ -22,7 +20,7 @@ let
   };
 in
 {
-  security.pam = mkMerge [
+  security.pam = lib.mkMerge [
     {
       # fix "too many files open" errors while writing a lot of data at once
       # was previously a huge issue when rebuilding
@@ -50,8 +48,8 @@ in
       };
     }
 
-    (mkIf config.grimoire.profiles.graphical.enable {
-      services = genAttrs services (_: mkService);
+    (lib.mkIf config.grimoire.profiles.graphical.enable {
+      services = lib.genAttrs services (_: mkService);
     })
   ];
 
@@ -99,7 +97,7 @@ in
         "sudo" = {
           state = "disable";
           profile = ''
-            ${getExe pkgs.sudo} {
+            ${lib.getExe pkgs.sudo} {
               file /** rwlkUx,
             }
           '';

@@ -8,7 +8,7 @@ let
 
   pkgs = import ../../packages;
 
-  grimoireLib = ./lib.nix;
+  grimoireLib = ./lib;
   
   sources = import ../../npins;
   disko = sources.disko;
@@ -36,16 +36,12 @@ in
     "${disko}/module.nix"
     "${nixos-facter-modules}/modules/nixos/facter.nix"
     nix-maid.nixosModules.default
-    ./lib.nix
-    ./core.nix
-    ./graphical.nix
-    ./laptop.nix
-    ./headless.nix
     ./security.nix
     ./hardware.nix
     ./users.nix
     ./system
     ./networking
+    ./profiles
   ];
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";

@@ -1,5 +1,5 @@
 {
-  dconf.settings + {
+  dconf.settings = {
     "/org/gnome/desktop/interface/color-scheme" = "prefer-dark";
     "/org/gnome/desktop/interace/cursor-size" = 24;
     "/org/gnome/desktop/interface/cursor-theme" = "Nordzy-catppuccin-sky";

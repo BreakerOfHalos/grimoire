@@ -19,6 +19,7 @@ let
   cfg = config.grimoire.system.networking.tailscale;
 in
 {
+  options.grimoire.system.networking.tailscale = {
     enable = mkEnableOption "Tailscale VPN";
 
     defaultFlags = mkOption {

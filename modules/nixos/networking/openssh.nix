@@ -1,12 +1,8 @@
-{
-  lib,
-  self,
-  config,
-  ...
-}:
-let
-  inherit (lib) mkMerge;
-in
+{ lib
+, specialArgs
+, grimoireLib
+, config
+, ... }:
 {
   boot.initrd.network.ssh.authorizedKeys = [
     "ssh-ed25519 " #  TODO: add my actual ssh key
@@ -82,15 +78,15 @@ in
     ];
 
     # find these with `ssh-keyscan <hostname>`
-    knownHosts = mkMerge [
+    knownHosts = lib.mkMerge [
       (grimoireLib.mkPubs "github.com" [
         {
           type = "rsa";
-          key = 
+          key = "";
         }
         {
           type = "ed25519";
-          key = 
+          key = "";
         }
       ])
     ];

@@ -14,7 +14,7 @@ in
     #
     # enable opensnitch firewall
     # inactive until opensnitch UI is opened
-    services.opensnitch.enable = device.type != "server";
+    services.opensnitch.enable = true;
 
     networking.firewall = {
       enable = true;

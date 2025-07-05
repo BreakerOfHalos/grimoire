@@ -1,16 +1,13 @@
-{ config, lib }: {
+{ config
+, lib
+, options
+, ... }: {
   nix = {
-    # This *should* give us the same packages in nix-shell and nix shell
-    # It works by pinning the NIX_PATH to refer the the flake registry on the machine
-    # EDIT: Following https://codeberg.org/kiara/dots/src/commit/6814db82b4857d0f3c7cedaa44af2bf7cad8a121/system/default.nix
-    # this is changed to not only look at nixpgs, but all the pins in `sources`.
-    nix.nixPath = [ NIX_PATH ];
-
     # Killing channels per https://jade.fyi/blog/pinning-nixos-with-npins/
     channel.enable = false;
 
     # Automatic garbage collection, of course.
-    gc {
+    gc = {
       automatic = true;
       options = "--delete-older-than 3d";
     };
@@ -24,9 +21,9 @@
       auto-optimise-store = true;
 
       # users or groups that are allowed to do anything with the Nix daemo
-      allowed-users = [ sudoers ];
+      allowed-users = [ "@wheel" ];
       # users or groups that are allowed to manage the Nix store
-      trusted-users = [ sudoers ];
+      trusted-users = [ "@wheel" ];
 
       # let the system decide how many jobs to run
       max-jobs = "auto";

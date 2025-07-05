@@ -2,28 +2,13 @@
   imports = [
     ./command-not-found.nix
     ./earlyoom.nix
-    ./firmware.nix
-    ./flatpak.nix
     ./fonts
-    ./gnome.nix
-    ./location.nix
-    ./logind.nix
-    ./loginManager.nix
     ./logs.nix
-    ./misc.nix
     ./monitoring.nix
     ./oomd.nix
     ./pager.nix
     ./printing.nix
-    ./revision
-    ./runners.nix
-    ./seatd.nix
     ./serial.nix
-    ./size.nix
     ./systemd.nix
-    ./terminfo.nix
-    ./vars
-    ./xdg-portals.nix
-    ./xserver.nix
   ];
 }

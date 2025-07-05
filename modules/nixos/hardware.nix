@@ -24,7 +24,7 @@ in
       };
 
       hasTPM = lib.mkOption {
-        type = bool;
+        type = lib.types.bool;
         default = false;
         description = "Whether the system has tpm support";
       };

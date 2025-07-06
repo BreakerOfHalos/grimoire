@@ -1,5 +1,5 @@
 { lib }:
-let
+{
   primaryMonitor = config: builtins.elemAt config.grimoire.device.monitors 0;
 
   mkProgram =
@@ -25,15 +25,4 @@ let
   };
 
   xdg = import ./xdg.nix;
-  
-in
-{
-  inherit
-    primaryMonitor
-    mkProgram
-    mkGraphicalService
-    ifTheyExist
-    mkPub
-    xdg
-    ;
 }

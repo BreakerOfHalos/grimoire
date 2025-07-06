@@ -3,9 +3,12 @@
 , grimoireLib
 , config
 , ... }:
+let
+  grimoireLib = import ../lib;
+in
 {
   boot.initrd.network.ssh.authorizedKeys = [
-    "ssh-ed25519 " #  TODO: add my actual ssh key
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2g4va2+22UMzA9CTwpGmtj7GfpNOyeXZOMsitUgkSG" #  TODO: add my actual ssh key
   ];
 
   services.openssh = {
@@ -82,11 +85,11 @@
       (grimoireLib.mkPubs "github.com" [
         {
           type = "rsa";
-          key = "";
+          key = "AAAAB3NzaC1yc2EAAAADAQABAAACAQDF5lw8/JU9NdOWkajvUSL+2iklu6xGjZs0VDNsA0Dp2fzWod03M6c8Ynuff3hoUIVXufvKCnsXcz1qo6C1dcX0o0dXDh/Vqwt4TBwBLj8wuPjLF78/BV91S9qDcdVSBjXwb6vDYupiVTxkMdkDTXICbq3OKzoygG4Lo3E06nYUjl/gs+hbWNJW3CxJxVKQyp6CFKVtblIhzUUh5O0byQpOqMrtnmhuRCkJ3xpwxnx8GTjsYCTcopX23ZBxbV2yup5K3Eucw6MFiafmvL7OGPfplIvDEsA8W1fXHvs8yNWpTXagtYFxupgti5sjrzaYp/GIOe6OHxM+c8PgyAdNh1c9xFj1+YZ1YfbixcPhanUmlvyWR/0wgr5MvGHTW6okKRu/d5hVBgEdb4JheCmvZpsub16o1/DHLd6hHO+PeHVVmT/BqTfwsulReIR3CZkD/EniCxKbH3kYcadD4hcNcl+AucZuBCRnC3BYAgSWh3uh02XU5TABggxeDAjfCXfuivF/t0YgTC2/sjqgyKx1z7Vui3ihs99t7CwYz4EElQJ392CT7ml0EKwe0wcWxwBS15Y25fEZDlkkuLsu+PK0jOMoMyXPq1ZcBkMK7hJABYSn5glj0Ngab1SoH+VZBSYF6Q2/9hQdb/KzLSdZqwfoRXgPwERYFhmGVo35qNNYcYrwWQ==";
         }
         {
           type = "ed25519";
-          key = "";
+          key = "AAAAC3NzaC1lZDI1NTE5AAAAIK2g4va2+22UMzA9CTwpGmtj7GfpNOyeXZOMsitUgkSG";
         }
       ])
     ];

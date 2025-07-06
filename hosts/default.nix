@@ -9,7 +9,7 @@ in
       {
         config.nixpkgs.pkgs = pkgs;
       }
-      ../modules/nixos;
+      ../modules/nixos
       (import sources.nix-maid).nixosModules.default
     ] ++ modules;
   }

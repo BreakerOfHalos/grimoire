@@ -91,7 +91,7 @@ in
       };
 
       # Yubico's official tools
-      grimoire.packages = {
+      environment.systemPackages = {
         inherit (pkgs)
           yubikey-manager # cli
           # yubikey-manager-qt # gui

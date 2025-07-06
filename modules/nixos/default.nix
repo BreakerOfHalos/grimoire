@@ -40,15 +40,15 @@ in
     ./security.nix
     ./hardware.nix
     ./nix.nix
+    ./profiles
     ./users.nix
     ./system
     ./networking
-    ./profiles
   ];
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = lib.mkDefault "America/Los_Angeles";
-  hardware.bluetooth.enable = lib.mkIf prof.graphical.enable;
+  hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   users.mutableUsers = false;
   fonts.enableDefaultPackages = true;
@@ -66,7 +66,7 @@ in
       enable = prof.gaming.enable;
     };
 
-    _1password.enabe = true;
+    _1password.enable = true;
     _1password-gui.enable = true;
     direnv.enable = true;
   };

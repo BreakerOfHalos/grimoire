@@ -55,7 +55,7 @@ in
 
   security = {
     polkit.enable = true;
-    soteria.enable = config.grimoire.graphical.enable;
+    soteria.enable = config.grimoire.profiles.graphical.enable;
     protectKernelImage = true;
     lockKernelModules = false; # breaks virtd, wireguard and iptables
 

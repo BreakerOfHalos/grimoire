@@ -8,7 +8,7 @@
     ./hardware-configuration.nix
   ];
 
-  network.hostName = "yawmga";
+  networking.hostName = "yawmga";
 
   grimoire = {
     profiles = {

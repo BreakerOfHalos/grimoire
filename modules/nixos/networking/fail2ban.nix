@@ -7,7 +7,7 @@ let
     concatStringsSep
     ;
 
-  cfg = config.grimoire.services;
+  # cfg = config.grimoire.services;
 in
 {
   # fail2ban firewall jail
@@ -31,30 +31,30 @@ in
         '';
       }
 
-      (mkIf cfg.vaultwarden.enable {
-        # vaultwarden and vaultwarden admin interface jails
-        vaultwarden = ''
-          enabled = true
-          port = 80,443,8822
-          filter = vaultwarden
-          banaction = %(banaction_allports)s
-          logpath = /var/log/vaultwarden.log
-          maxretry = 3
-          bantime = 14400
-          findtime = 14400
-        '';
+      # (mkIf cfg.vaultwarden.enable {
+      #   # vaultwarden and vaultwarden admin interface jails
+      #   vaultwarden = ''
+      #     enabled = true
+      #     port = 80,443,8822
+      #     filter = vaultwarden
+      #     banaction = %(banaction_allports)s
+      #     logpath = /var/log/vaultwarden.log
+      #     maxretry = 3
+      #     bantime = 14400
+      #     findtime = 14400
+      #   '';
 
-        vaultwarden-admin = ''
-          enabled = true
-          port = 80,443
-          filter = vaultwarden-admin
-          banaction = %(banaction_allports)s
-          logpath = /var/log/vaultwarden.log
-          maxretry = 3
-          bantime = 14400
-          findtime = 14400
-        '';
-      })
+      #   vaultwarden-admin = ''
+      #     enabled = true
+      #     port = 80,443
+      #     filter = vaultwarden-admin
+      #     banaction = %(banaction_allports)s
+      #     logpath = /var/log/vaultwarden.log
+      #     maxretry = 3
+      #     bantime = 14400
+      #     findtime = 14400
+      #   '';
+      # })
     ];
 
     bantime-increment = {

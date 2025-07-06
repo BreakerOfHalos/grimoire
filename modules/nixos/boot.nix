@@ -15,7 +15,7 @@
       efi.canTouchEfiVariables = true;
 
       systemd-boot = {
-        enable = lib.mkdefault true;
+        enable = lib.mkDefault true;
         configurationLimit = 15;
         consoleMode = lib.mkDefault "max";
       };

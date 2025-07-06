@@ -6,7 +6,7 @@
 , grimoireLib
 , ... }:
 {
-  user.users.${user} = {
+  users.users.breakerofhalos = {
     uid = 1000;
     isNormalUser = true;
 

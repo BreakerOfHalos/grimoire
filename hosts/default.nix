@@ -4,7 +4,7 @@ let
 in
 (
   { modules }:
-  {
+  import "${sources.nixpkgs}/nixos/lib/eval-config.nix" {
     modules = [
       {
         config.nixpkgs.pkgs = pkgs;

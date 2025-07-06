@@ -34,14 +34,14 @@
 
   file = {
     xdg_config = {
-      fish.target = ./fish;
-      helix.target = ./helix;
-      hypr.target = ./hypr;
-      mako.target = ./mako;
-      niri.target = ./niri;
-      quickshell.target = ./quickshell;
-      starship.target = ./starship/starship.toml;
-      yazi.target = ./yazi;
+      fish.source = ./fish;
+      helix.source = ./helix;
+      hypr.source = ./hypr;
+      mako.source = ./mako;
+      niri.source = ./niri;
+      quickshell.source = ./quickshell;
+      starship.source = ./starship/starship.toml;
+      yazi.source = ./yazi;
     };
   };
 }

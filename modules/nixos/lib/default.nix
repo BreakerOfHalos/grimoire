@@ -1,4 +1,12 @@
 { lib }:
+let
+  mkPub = host: key: {
+    "${host}-${key.type}" = {
+    hostNames = [ host ];
+    publicKey = "ssh-${key.type} ${key.key}";
+    };
+  };
+in
 {
   primaryMonitor = config: builtins.elemAt config.grimoire.device.monitors 0;
 
@@ -17,12 +25,7 @@
 
   ifTheyExist = config: groups: lib.filter (group: lib.hasAttr group config.users.groups) groups;
 
-  mkPub = host: key: {
-    "${host}-${key.type}" = {
-    hostNames = [ host ];
-    publicKey = "ssh-${key.type} ${key.key}";
-    };
-  };
+  mkPubs = host: keys: lib.foldl' (acc: key: acc // mkPub host key) { } keys;
 
   xdg = import ./xdg.nix;
 }

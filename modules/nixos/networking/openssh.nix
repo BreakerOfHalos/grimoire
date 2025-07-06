@@ -4,7 +4,7 @@
 , config
 , ... }:
 let
-  grimoireLib = import ../lib;
+  grimoireLib = import ../lib { inherit lib; };
 in
 {
   boot.initrd.network.ssh.authorizedKeys = [
@@ -18,7 +18,7 @@ in
     allowSFTP = true;
 
     banner = ''
-      Connected to ${config.system.name} @ ${config.system.configurationRevision}
+      Connected to ${config.system.name} @ ${config.system.stateVersion}
 
       All conntections to this server are logged. Please disconnect now if you
       are not permitted access.

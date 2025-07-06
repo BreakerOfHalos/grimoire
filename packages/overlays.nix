@@ -15,7 +15,7 @@ let
     final: prev:
     (
       readDir ./.
-      |> lib filterAttrs (_: value: value == "directory")
+      |> lib.filterAttrs (_: value: value == "directory")
       |> mapAttrs (
         name: _:
         final.callPackage ./${name} {
@@ -40,19 +40,19 @@ let
     zen-browser = ((import sources.zen-browser-flake) { pkgs = final; }).zen-browser;
   };
 
-  overlayWrapperManager =
-    final: prev:
-    let
-      wrapper-manager = import sources.wrapper-manager;
-      evald = wrapper-manager.lib {
-        pkgs = prev;
-        modules =
-          builtins.readDir ../modules/wrapper-manager
-          |> builtins.attrNames
-          |> map (n: ../modules/wrapper-manager/${n});
-      };
-      in
-      mapAttrs (_: value: value.wrapped) evald.config.wrappers;
+  # overlayWrapperManager =
+  #   final: prev:
+  #   let
+  #     wrapper-manager = import sources.wrapper-manager;
+  #     evald = wrapper-manager.lib {
+  #       pkgs = prev;
+  #       modules =
+  #         builtins.readDir ../modules/wrapper-manager
+  #         |> builtins.attrNames
+  #         |> map (n: ../modules/wrapper-manager/${n});
+  #     };
+  #     in
+  #     mapAttrs (_: value: value.wrapped) evald.config.wrappers;
 
     overlayVersion = final: prev: {
       lib = prev.lib.extend (
@@ -68,6 +68,6 @@ lib.composeManyExtensions [
   overlayPatches
   overlayAuto
   overlayAdditionalSources
-  overlayWrapperManager
+  # overlayWrapperManager
   overlayVersion
 ]

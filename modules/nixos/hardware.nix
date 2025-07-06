@@ -23,15 +23,15 @@ in
         '';
       };
 
-      hasTPM = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether the system has tpm support";
+      capabilities = {
+        tpm = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Whether the system has TPM support";
+        };
+
+        yubikey = lib.mkEnableOption "YukiKey Support";
       };
-    };
-    
-    system.yubikeySupport = {
-      enable = lib.mkEnableOption "yubikey support";
     };
   };
 
@@ -53,7 +53,7 @@ in
       };
     })
  
-    (lib.mkIf config.grimoire.device.hasTPM {
+    (lib.mkIf config.grimoire.device.capabilities.tpm {
       security.tpm2 = {
         # enable Trusted Platform Module 2 support
         enable = lib.mkDefault true;
@@ -73,7 +73,7 @@ in
       boot.initrd.kernelModules = [ "tpm" ];
     })
 
-    (lib.mkIf config.grimoire.system.yubikeySupport.enable {
+    (lib.mkIf config.grimoire.device.capabilities.yubikey {
       hardware.gpgSmartcards.enable = true;
 
       services = {

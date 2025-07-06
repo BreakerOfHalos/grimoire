@@ -33,7 +33,7 @@ let
       in final { imports = [ lixModule { lix = lixSrc; } ]; };
 
     nix = prev.nix;
-    lix = prev.lix;
+    # lix = prev.lix;
 
     maid = (import sources.nix-maid) final ../modules/maid;
 

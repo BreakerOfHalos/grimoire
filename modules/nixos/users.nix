@@ -5,6 +5,9 @@
 , sources
 , grimoireLib
 , ... }:
+let
+  grimoireLib = ./lib { inherit lib; };
+in
 {
   users.users.breakerofhalos = {
     uid = 1000;

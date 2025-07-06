@@ -58,7 +58,7 @@ in
 
   config = mkIf cfg.enable {
     # make the tailscale command usable to users
-    grimoire.packages = { inherit (pkgs) tailscale; };
+    environment.systemPackages = { inherit (pkgs) tailscale; };
 
     networking.firewall = {
       # always allow traffic from your Tailscale network

@@ -15,7 +15,7 @@ let
   sys = config.grimoire.system;
 in
 {
-  grimoire.packages = optionalAttrs config.grimoire.profiles.graphical.enable {
+  environment.systemPackages = optionalAttrs config.grimoire.profiles.graphical.enable {
     inherit (pkgs) networkmanagerapplet; # provides nm-connection-editor
   };
 

@@ -6,7 +6,7 @@
 , grimoireLib
 , ... }:
 let
-  grimoireLib = ./lib { inherit lib; };
+  grimoireLib = import ./lib { inherit lib; };
 in
 {
   users.users.breakerofhalos = {

@@ -4,8 +4,7 @@
 , ... }:
 {
   imports = [
-    ../../modules/nixos
-    ../../modules/maid
+    ../default.nix
     ./hardware-configuration.nix
   ];
 

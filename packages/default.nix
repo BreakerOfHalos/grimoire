@@ -1,5 +1,5 @@
 let
-  sources = import ./npins;
+  sources = import ../npins;
   lib = import "${sources.nixpkgs}/lib";
 in
 import sources.nixpkgs {

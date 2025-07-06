@@ -3,8 +3,9 @@ let
   pkgs = import ../packages;
 in
 (
-  { modules }:
+  { modules, config }:
   import "${sources.nixpkgs}/nixos/lib/eval-config.nix" {
+    system = null;
     modules = [
       {
         config.nixpkgs.pkgs = pkgs;

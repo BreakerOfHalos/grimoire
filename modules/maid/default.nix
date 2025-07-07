@@ -40,7 +40,7 @@
       mako.source = ./mako;
       niri.source = ./niri;
       quickshell.source = ./quickshell;
-      starship.source = ./starship/starship.toml;
+      starship.source = ./starship.toml;
       yazi.source = ./yazi;
     };
   };

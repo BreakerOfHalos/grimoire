@@ -20,7 +20,7 @@ in
     enable = mkEnableOption "printing";
 
     extraDrivers = mkOption {
-      type = attrsOf path;
+      type = lib.types.attrsOf path;
       default = [ ];
       description = "A list of additional drivers to install for printing";
     };

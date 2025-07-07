@@ -7,11 +7,13 @@
 , ... }:
 let
   grimoireLib = import ./lib { inherit lib; };
+  user = "breakerofhalos";
 in
 {
-  users.users.breakerofhalos = {
+  users.users.${user} = {
     uid = 1000;
     isNormalUser = true;
+    hashedPassword = "$y$j9T$5gLgIR1EDwsvakM9v2WqB0$fteqAzttBy4yDECFCiLkYC15kGUTPAlhHsTXZXWVLxD";
 
     home = "/home/${user}";
 

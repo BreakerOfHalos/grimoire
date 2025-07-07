@@ -50,7 +50,6 @@ in
   time.timeZone = lib.mkDefault "America/Los_Angeles";
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
-  users.mutableUsers = false;
   fonts.enableDefaultPackages = true;
   nix.nixPath = [ NIX_PATH ];
 
@@ -69,6 +68,14 @@ in
     _1password.enable = true;
     _1password-gui.enable = true;
     direnv.enable = true;
+    fish.enable = true;
+  };
+
+  services = {
+    userborn = {
+      enable = true;
+      # passwordFilesLocation = "/persistent/etc";
+    };
   };
 
   zramSwap = {

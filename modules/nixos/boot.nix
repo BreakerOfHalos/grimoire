@@ -10,7 +10,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {
-      timeout = lib.mkforce 2;
+      timeout = lib.mkForce 2;
       generationsDir.copyKernels = true;
       efi.canTouchEfiVariables = true;
 

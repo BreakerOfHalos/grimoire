@@ -49,6 +49,6 @@ in
     };
 
     # causes server to be unreachable over SSH
-    ethernet.macAddress = mkIf (!config.grimoire.profiles.server.enable) "random";
+    ethernet.macAddress = mkIf (!config.grimoire.profiles.headless.enable) "random";
   };
 }

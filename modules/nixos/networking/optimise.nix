@@ -6,7 +6,7 @@ let
 in
 {
   options.grimoire.system.networking.optimizeTcp = mkEnableOption "Enable tcp optimizations" // {
-    default = !config.grimoire.profiles.server.enable;
+    default = !config.grimoire.profiles.headless.enable;
   };
 
   config = mkIf cfg.optimizeTcp {

@@ -91,12 +91,9 @@ in
       };
 
       # Yubico's official tools
-      environment.systemPackages = {
-        inherit (pkgs)
-          yubikey-manager # cli
-          # yubikey-manager-qt # gui
-          ;
-      };
+      environment.systemPackages = [
+        pkgs.yubikey-manager # cli
+      ];
     })
   ];
 }

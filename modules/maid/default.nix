@@ -26,7 +26,7 @@
     orca-slicer
     discordo
     moonlight
-    nheko
+    # nheko # currently insecure
     junction
     quickshell
     ;

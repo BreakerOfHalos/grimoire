@@ -36,7 +36,7 @@ in
           {
             inherit (pkgs) gutenprint hplip;
           }
-          // cfg.extraDrivers;
+          // cfg.extraDrivers
         );
       };
 

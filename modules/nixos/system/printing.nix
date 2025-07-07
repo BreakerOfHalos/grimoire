@@ -20,7 +20,7 @@ in
     enable = mkEnableOption "printing";
 
     extraDrivers = mkOption {
-      type = listOf str;
+      type = attrsOf path;
       default = [ ];
       description = "A list of additional drivers to install for printing";
     };
@@ -34,7 +34,7 @@ in
 
         drivers = attrValues (
           {
-            inherit (pkgs) gutenprint hplip;
+            inherit (pkgs) gutenprint hplip brlaser;
           }
           // cfg.extraDrivers
         );

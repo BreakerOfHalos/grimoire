@@ -30,7 +30,7 @@ in
       allowedUDPPortRanges = [ ];
 
       # allow servers to be pinnged, but not our clients
-      allowPing = config.grimoire.profiles.server.enable;
+      allowPing = config.grimoire.profiles.headless.enable;
 
       # make a much smaller and easier to read log
       logReversePathDrops = true;

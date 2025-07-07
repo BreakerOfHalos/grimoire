@@ -21,7 +21,7 @@ in
 
     extraDrivers = mkOption {
       type = lib.types.attrsOf lib.types.path;
-      default = [ ];
+      default = { };
       description = "A list of additional drivers to install for printing";
     };
   };

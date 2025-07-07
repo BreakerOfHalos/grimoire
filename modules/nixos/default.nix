@@ -8,7 +8,7 @@ let
 
   pkgs = import ../../packages;
 
-  grimoireLib = ./lib;
+  grimoireLib = import ./lib { inherit lib; };
   
   sources = import ../../npins;
   disko = sources.disko;
@@ -96,7 +96,7 @@ in
   };
 
   environment = {
-    variables = grimoireLib.xdg-template.global;
-    sessionVariables = grimoireLib.xdg-template.user grimoireLib.xdg-template.simple;
+    variables = grimoireLib.xdg.global;
+    sessionVariables = grimoireLib.xdg.user grimoireLib.xdg.simple;
   };
 }

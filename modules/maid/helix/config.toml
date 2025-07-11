@@ -1,0 +1,38 @@
+theme = "tokyonight"
+
+[editor]
+# Editor settings for interacting with text.
+
+# Sets the line number to be relative in Normal mode.
+line-number = "relative"
+
+# Displays the bufferline to track buffers.
+bufferline = "multiple"
+
+# Adds a pop of color to the mode indicator.
+color-modes = "true"
+
+[editor.statusline]
+# Changes up what the statusline at the bottom of the screen displays.
+left = [ "mode", "version-control", "file-modification-indicator" ]
+center = [ "file-name" ]
+right = [ "spinner", "selections", "position" ]
+seperator = "|"
+
+[editor.indent-guides]
+# Setting up indent guides.
+
+# Helix will render indent guides now.
+render = "true"
+
+# hanges up what the statusline at the bottom of the screen displays.[editor.indent-guides]
+# # Setting up indent guides.
+
+# Helix will render indent guides now.
+
+
+# hanges up what the statusline at the bottom of the screen displays.[editor.indent-guidesr
+# # Setting up indent guides.
+
+# Helix will render indent guides now.
+render = "trueender = "true"

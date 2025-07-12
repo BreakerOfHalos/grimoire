@@ -29,6 +29,7 @@
     # nheko # currently insecure
     junction
     quickshell
+    ghostty
     ;
   };
 

@@ -1,0 +1,15 @@
+// Defaults
+// https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
+
+session_serialization false
+copy_on_select true
+mouse_mode true
+show_startup_tips true
+
+ui {
+	pane_frame {
+		rounded_corners true
+	}
+}
+
+theme "tokyonight_night"

@@ -30,6 +30,7 @@
     junction
     quickshell
     ghostty
+    fuzzel
     ;
   };
 

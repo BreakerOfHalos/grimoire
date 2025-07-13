@@ -1,6 +1,7 @@
 { config
 , lib
 , options
+, pkgs
 , ... }: {
   nix = {
     # Killing channels per https://jade.fyi/blog/pinning-nixos-with-npins/
@@ -11,6 +12,8 @@
       automatic = true;
       options = "--delete-older-than 3d";
     };
+
+    # package = pkgs.lix;
 
     settings = {
       # Freeing up space if we run low. It'll free up to 20GB whenever there's less
@@ -51,7 +54,7 @@
         "nix-command"
 
         # I want the shiny lix toys, even if I'm not quite sure what they do.
-        "lix-custom-sub-commands"
+        # "lix-custom-sub-commands"
 
         # IDK seems neat and less annoying than having temp user ghosts.
         "auto-allocate-uids"

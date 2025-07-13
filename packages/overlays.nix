@@ -26,13 +26,13 @@ let
 
   overlayAdditionalSources = final: prev: {
     # Switching lix over to the direct build
-    lix =
-      let
-        lixModule = import "${sources.nixosModule}/module.nix";
-        lixSrc = import sources.lix;
-      in final { imports = [ lixModule { lix = lixSrc; } ]; };
+    # lix =
+    #   let
+    #     lixModule = import "${sources.nixosModule}/module.nix";
+    #     lixSrc = import sources.lix;
+    #   in final lixModule { lix = lixSrc; };
 
-    nix = prev.nix;
+    # nix = prev.nix;
     # lix = prev.lix;
 
     maid = (import sources.nix-maid) final ../modules/maid;

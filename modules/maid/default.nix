@@ -31,6 +31,7 @@
     quickshell
     ghostty
     fuzzel
+    vivaldi
     ;
   };
 

@@ -11,27 +11,25 @@ let
     
   };
 
-  # overlayAuto =
-  #   final: prev:
-  #   (
-  #     readDir ./.
-  #     |> lib.filterAttrs (_: value: value == "directory")
-  #     |> mapAttrs (
-  #       name: _:
-  #       final.callPackage ./${name} {
-          
-  #       }
-  #     )
-  #   ) // { };
-
-  overlayAuto = final: prev: (
-    lib.mapAttrs
+  overlayAuto =
+    final: prev:
     (
-      name: _: final.callpackage ./${name} {
-        lib.filterAttrs (_: value: value == "directory") lib.readDir ./.
-      }
-    )
-  ) // { };
+      readDir ./.
+      |> lib.filterAttrs (_: value: value == "directory")
+      |> mapAttrs (
+        name: _:
+        final.callPackage ./${name} {
+          
+        }
+      )
+    ) // { };
+
+  # overlayAuto = final: prev: (
+  #   lib.mapAttrs
+  #   (
+  #     name: _: final.callpackage ./${name} {lib.filterAttrs = (_: (value: value == "directory") ( lib.readDir ./. ));}
+  #   )
+  # ) // { };
 
   overlayAdditionalSources = final: prev: {
     # Switching lix over to the direct build

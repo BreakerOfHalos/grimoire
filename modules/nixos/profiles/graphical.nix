@@ -67,7 +67,7 @@ in
       hyprlock.enable = true;
       
       regreet = {
-        enable = true;
+        enable = false;
         theme = {
           name = cfg.gtk-theme;
         };
@@ -138,21 +138,7 @@ in
       };
 
       # Enabling greetd as the display manager
-      greetd = let
-        niri-config = pkgs.writeText "niri-config" ''
-      hotkey-overlay {
-          skip-at-startup
-      }
-      environment {
-          GTK_USE_PORTAL "0"
-          GDK_DEBUG "no-portals"
-      }
-
-      // other settings
-
-      spawn-at-startup "sh" "-c" "${pkgs.greetd.regreet}/bin/regreet; pkill -f niri"
-      '';
-      in {
+      greetd = {
         enable = true;
         vt = 2;
         restart = true;
@@ -160,11 +146,14 @@ in
         settings = {
           default_session = {
             user = "greeter";
-            command = "niri -c ${niri-config}";
-          };
-          initial_session = {
-            command = "niri-session";
-            user = "heretics"
+            command = concatStringsSep " " [
+              (lib.getExe pkgs.greetd.tuigreet)
+              "--time"
+              "--remember"
+              "--remember-user-session"
+              "--asterisks"
+              "--sessions niri-session"
+            ];
           };
         };
       };

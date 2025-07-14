@@ -63,7 +63,7 @@
         "cgroups"
 
         # Laying pipe
-        "pipe-operator"
+        # "pipe-operator"
       ];
 
       # Adds more connections for imports and caches.

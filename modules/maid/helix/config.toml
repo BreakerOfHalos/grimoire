@@ -23,4 +23,4 @@ seperator = "|"
 # Setting up indent guides.
 
 # Helix will render indent guides now.
-render = "true"
+render = true

@@ -28,7 +28,7 @@ in
     location.provider = "geoclue2";
 
     qt = {
-      enabme = true;
+      enable = true;
       platformTheme = "gnome";
       style = "adwaita-dark";
     };
@@ -37,6 +37,8 @@ in
       # CLI base tools
       usbutils
       pciutils
+      libnotify
+      niri
 
       # Themeing and aesthetics
       tokyonight-gtk-theme
@@ -50,9 +52,25 @@ in
       fuzzel
     ];
 
+    systemd.user = {
+      services.niri-flake-polkit = {
+        description = "PolicyKit Authentication Agent provided by niri-flake";
+        wantedBy = [ "niri.service" ];
+        after = [ "graphical-session.target" ];
+        partOf = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+      };
+    };
+
     programs = {
       # Enable our chosen window manager
-      niri.enable = true;
+      # niri.enable = true;
           
       # We need dconf to interact with gtk
       dconf.enable = true;
@@ -66,40 +84,45 @@ in
       # And a screen locker
       hyprlock.enable = true;
       
-      regreet = {
-        enable = false;
-        theme = {
-          name = cfg.gtk-theme;
-        };
-        iconTheme = {
-          name = cfg.gtk-theme;
-        };
-        cursorTheme = {
-          name = cfg.xcursor;
-        };
-        settings = {
-          background.path = "~/Pictures/wallpapers/estradiol.png";
-          widget.clock.format = "%a %Y-%m-%d %H:%M";
-        };
-      };
+      # regreet = {
+      #   enable = false;
+      #   theme = {
+      #     name = cfg.gtk-theme;
+      #   };
+      #   iconTheme = {
+      #     name = cfg.gtk-theme;
+      #   };
+      #   cursorTheme = {
+      #     name = cfg.xcursor;
+      #   };
+      #   settings = {
+      #     background.path = "~/Pictures/wallpapers/estradiol.png";
+      #     widget.clock.format = "%a %Y-%m-%d %H:%M";
+      #   };
+      # };
 
-      gtklock = {
-        enable = false;
-        config = {
-          main = {
-            gtk-theme = cfg.gtk-theme;
-            idle-hide = true;
-            idle-timeout = 45;
-            follow-focus = true;
-            date-format = "%a %Y-%m-%d";
-            time-format = "%H:%M";
-          };
-        };
-      };
+      # gtklock = {
+      #   enable = false;
+      #   config = {
+      #     main = {
+      #       gtk-theme = cfg.gtk-theme;
+      #       idle-hide = true;
+      #       idle-timeout = 45;
+      #       follow-focus = true;
+      #       date-format = "%a %Y-%m-%d";
+      #       time-format = "%H:%M";
+      #     };
+      #   };
+      # };
     };
 
     services = {
 
+      displayManager = {
+        defaultSession = "niri";
+        sessionPackages = lib.mkForce [ pkgs.niri ];
+      };
+      
       # Disable chrony in favor of systemd-timesyncd
       timesyncd.enable = lib.mkDefault true;
       chrony.enable = lib.mkDefault false;
@@ -116,7 +139,10 @@ in
         glib-networking.enable = true;
 
         # Using the newer gcr instead of gnome-keyring
-        gcr-ssh-agent.enable = true;
+        # gcr-ssh-agent.enable = true;
+
+        # Using standard keyring to see if this helps
+        gnome-keyring.enable = true;
 
         # GNOME assisstive tech framework
         at-spi2-core.enable = true;
@@ -127,6 +153,7 @@ in
 
       geoclue2 = {
         enable = true;
+        enableWifi = true;
         geoProviderUrl = "https://beacondb.net/v1/geolocate";
         submissionUrl = "https://beacondb.net/v2/geosubmit";
         submissionNick = "geoclue";
@@ -182,15 +209,29 @@ in
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
-      config.common = {
-        default = [ "gtk" "gnome" ];
-        "org.freedesktop.impl.portal.ScreenCast" = "gnome";
-        "org.freedesktop.impl.portal.Screenshot" = "gnome";
-      };
+      # config.common = {
+      #   default = [ "gtk" "gnome" ];
+      #   "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+      #   "org.freedesktop.impl.portal.Screenshot" = "gnome";
+      # };
       extraPortals = [
         pkgs.xdg-portal-gtk
         pkgs.xdg-portal-gnome
       ];
+      config =
+        let
+          common = {
+            default = [ "gnome" "gtk" ];
+            "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+            "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+            "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+          };
+        in
+        {
+          inherit common;
+          niri = common;
+        };
+      configPackages = [ pkgs.niri ];
     };
 
     hardware.opengl = {

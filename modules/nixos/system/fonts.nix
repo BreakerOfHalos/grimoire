@@ -8,6 +8,12 @@
     inherit (pkgs)
       corefonts
 
+      pragmata-pro
+      pragmata-pro-mono
+      pragmata-pro-fraktur
+
+      sys-font
+
       source-sans
       source-serif
 

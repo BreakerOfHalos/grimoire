@@ -192,5 +192,12 @@ in
         pkgs.xdg-portal-gnome
       ];
     };
+
+    hardware.opengl = {
+      enable = true;
+      extraPAckages = [
+        pkgs.vpl-gpu-rt
+      ];
+    };
   };
 }

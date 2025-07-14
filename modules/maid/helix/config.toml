@@ -10,7 +10,7 @@ line-number = "relative"
 bufferline = "multiple"
 
 # Adds a pop of color to the mode indicator.
-color-modes = "true"
+color-modes = true
 
 [editor.statusline]
 # Changes up what the statusline at the bottom of the screen displays.

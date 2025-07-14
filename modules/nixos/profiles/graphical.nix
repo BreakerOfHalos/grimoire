@@ -84,7 +84,7 @@ in
       };
 
       gtklock = {
-        enable = true;
+        enable = false;
         config = {
           main = {
             gtk-theme = cfg.gtk-theme;

@@ -129,6 +129,7 @@
 
       # prevent the kernel from blanking plymouth out of the fb
       "fbcon=nodefer"
+      "plymouth.use-simpledrm"
     ];
 
     blacklistedKernelModules = lib.concatLists [

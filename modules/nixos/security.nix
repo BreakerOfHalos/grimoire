@@ -7,7 +7,6 @@ let
     "login"
     "greetd"
     "tuigreet"
-    "regreet"
   ];
 
   mkService = {

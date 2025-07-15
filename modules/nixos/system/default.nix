@@ -1,5 +1,6 @@
 {
   imports = [
+    ./fonts
     ./command-not-found.nix
     ./earlyoom.nix
     ./logs.nix

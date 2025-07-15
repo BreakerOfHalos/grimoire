@@ -9,11 +9,11 @@ let
   grimoireLib = import ./lib { inherit lib; };
   
   sources = import ../../npins;
-  disko = import sources.disko;
+  disko = sources.disko;
   nix-maid = import sources.nix-maid;
-  nixos-facter-modules = import sources.nixos-facter-modules;
-  lix-module = import sources.lix-module;
-  lixSrc = import sources.lixSrc;
+  nixos-facter-modules = sources.nixos-facter-modules;
+  lix-module = sources.lix-module;
+  lixSrc = sources.lixSrc;
 
   NIX_PATH =
     let
@@ -31,7 +31,7 @@ let
 in
 {
   imports = [
-    ("${lix-module}/module.nix" { lix = "${lixSrc}"; })
+    (import "${lix-module}/module.nix" { lix = lixSrc; })
     ./boot
     ./nixpkgs.nix
     ./core

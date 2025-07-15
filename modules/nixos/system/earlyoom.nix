@@ -10,6 +10,7 @@ let
   avoid = concatStringsSep "|" [
     "niri"
     "alacritty"
+    "ghostty"
     "sway"
     "Xwayland"
     "cryptsetup"

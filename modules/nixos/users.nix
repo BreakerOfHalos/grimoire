@@ -19,8 +19,6 @@ in
 
     shell = pkgs.fish;
 
-    maid = ../maid;
-
     extraGroups =
       [
         "wheel"

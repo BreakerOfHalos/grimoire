@@ -21,7 +21,7 @@ in
     allowUnfreePredicate = _: true;
     allowVariants = false;
     allowBroken = false;
-    permittedInsecurePackages = [ ];
+    permittedInsecurePackages = [ "mono-5.20.1.34" ];
     allowUnsupportedSystems = true;
     allowAliases = false;
   };

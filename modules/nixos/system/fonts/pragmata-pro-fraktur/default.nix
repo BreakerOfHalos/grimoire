@@ -9,7 +9,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   version = "1.2";
 
   src = requireFile rec {
-    name = "${finalAttrs.pname}-${finalAttrs.version}-eevljf.zip";
+    name = "${finalAttrs.pname}-${finalAttrs.version}";
     sha256 = "06mv8r6z0ky7jkapwjia897kv0wmb9f6930706kam24rij3wiqz5";
     message = ''
       This file has to be downloaded from the designer's site
@@ -23,18 +23,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       nix-prefetch-url --type sha256 file://\$PWD/${name}
     '';
   };
-
-  nativeBuildInputs = [ unzip ];
-
-  unpackPhase = ''
-    runHook preUnpack
-
-    unzip $src
-
-    setSourceRoot = "sourceRoot=$(echo */PragmataProFraktur${finalAttrs.version})"
-
-    runHook postUnpack
-  '';
 
   installPhase = ''
     runHook preInstall

@@ -15,7 +15,7 @@ in
         byName = builtins.elem pname [
           "nix" 
           "lix"
-          "mono-5.20.1.34"
+          "mono"
         ];
       in
       if byName then lib.warn "Allowing insecure package: ${pname}" true else false;

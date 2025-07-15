@@ -179,7 +179,8 @@ in
               "--remember"
               "--remember-user-session"
               "--asterisks"
-              "--sessions niri-session"
+              "--cmd niri-session"
+              "--greeting 'Speak friend and enter'"
             ];
           };
         };

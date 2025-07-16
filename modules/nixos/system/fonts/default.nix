@@ -3,12 +3,12 @@
   pkgs,
   ...
 }:
-let
-  pragmata-pro         = pkgs.callPackage ./pragmata-pro {inherit pkgs;};
-  pragmata-pro-mono    = pkgs.callPackage ./pragmata-pro-mono {inherit pkgs;};
-  pragmata-pro-fraktur = pkgs.callPackage ./pragmata-pro-fraktur {inherit pkgs;};
-  sys-font             = pkgs.callPackage ./sys-font {inherit pkgs;};
-in
+# let
+#   pragmata-pro         = pkgs.callPackage ./pragmata-pro {inherit pkgs;};
+#   pragmata-pro-mono    = pkgs.callPackage ./pragmata-pro-mono {inherit pkgs;};
+#   pragmata-pro-fraktur = pkgs.callPackage ./pragmata-pro-fraktur {inherit pkgs;};
+#   sys-font             = pkgs.callPackage ./sys-font {inherit pkgs;};
+# in
 {
   fonts = {
     
@@ -45,10 +45,10 @@ in
       
 
       nerd-fonts.symbols-only
-      pragmata-pro
-      pragmata-pro-fraktur
-      pragmata-pro-mono
-      sys-font
+      # pragmata-pro
+      # pragmata-pro-fraktur
+      # pragmata-pro-mono
+      # sys-font
     ];
   };
 }

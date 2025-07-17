@@ -13,7 +13,7 @@
   grimoire = {
     profiles = {
       graphical.enable = true;
-      gaming.enable = true;
+      # gaming.enable = true;
     };
 
     device.capabilities = {

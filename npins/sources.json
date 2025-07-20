@@ -24,6 +24,33 @@
       "url": null,
       "hash": "sha256-7LYDxKxZgBQ8LZUuolAQ8UkIB+jb4A2UmiR+kzY9CLI="
     },
+    "impermanence": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/impermanence.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+      "url": null,
+      "hash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI="
+    },
+    "lanzaboote": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/lanzaboote.git"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.4.2",
+      "revision": "f0212638a2ec787a7841882f4477d40ae24f0a5d",
+      "url": null,
+      "hash": "sha256-AEEDktApTEZ5PZXNDkry2YV2k6t0dTgLPEmAZbnigXU="
+    },
     "lix-module": {
       "type": "Tarball",
       "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz",

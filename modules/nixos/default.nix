@@ -10,6 +10,8 @@ let
   nixos-facter-modules = sources.nixos-facter-modules;
   lix-module = sources.lix-module;
   lixSrc = sources.lixSrc;
+  impermanence = sources.impermanence;
+  lanzaboote = sources.lanzaboote;
 in
 {
   imports = [
@@ -18,6 +20,8 @@ in
     ./nixpkgs.nix
     ./core.nix
     "${disko}/module.nix"
+    lanzaboote.nixosModules.lanzaboote
+    impermanence.nixosModules.impermanence
     "${nixos-facter-modules}/modules/nixos/facter.nix"
     nix-maid.nixosModules.default
     ./security.nix

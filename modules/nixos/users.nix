@@ -13,7 +13,7 @@ in
   users.users.${user} = {
     uid = 1000;
     isNormalUser = true;
-    hashedPassword = "$y$j9T$5gLgIR1EDwsvakM9v2WqB0$fteqAzttBy4yDECFCiLkYC15kGUTPAlhHsTXZXWVLxD";
+    initialPassword = "changeme";
 
     home = "/home/${user}";
 
@@ -44,4 +44,6 @@ in
         "cloudflared"
       ];
   };
+
+  users.users.root.initialPassword = "changeme";
 }

@@ -33,6 +33,9 @@
         ghostty
         fuzzel
         vivaldi
+        nix-your-shell
+        nil
+        nixpkgs-fmt
         ;
       };
 
@@ -58,6 +61,7 @@
         waybar.source = ./waybar;
         yazi.source = ./yazi;
         zellij.source = ./zellij;
+        "nushell/nix-your-shell.nu".source = pkgs.nix-your-shell.generate-config "nu";
       };
     };
   };

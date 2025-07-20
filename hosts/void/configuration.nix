@@ -5,16 +5,15 @@
 {
   imports = [
     ../../modules
-    ./hardware-configuration.nix
+    ./void-disk-configuration.nix
   ];
 
-  networking.hostName = "yawmga";
+  networking.hostName = "void";
 
   grimoire = {
     profiles = {
       graphical.enable = true;
       # gaming.enable = true;
-      laptop.enable = true;
     };
 
     device.capabilities = {

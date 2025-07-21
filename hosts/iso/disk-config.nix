@@ -3,6 +3,7 @@
     disk = {
       main = {
         type = "disk";
+# Change the device name to match the actual hardware
         device = "/dev/vdb";
         content = {
           type = "gpt";
@@ -28,7 +29,8 @@
                 passwordFile = "/tmp/secret.key";
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-L" "void" "-f" ];
+# Change the label after "-L" to match the hostname of the system
+                  extraArgs = [ "-L" "nixos" "-f" ];
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
@@ -77,6 +79,7 @@
                         "noatime"
                       ];
                     };
+# Change the swap size to match your RAM * 1.5
                     "/swap" = {
                       mountpoint = "/swap";
                       mountOptions = [
@@ -97,11 +100,12 @@
     };
   };
 
-  fileSystems = {
+  filesystems = {
     "/persist".neededForBoot = true;
     "/var/log".neededForBoot = true;
   };
-  
+
+# Update this with the actual swapfile size  
   swapDevices = [
     {
       device = "/swap/swapfile";

@@ -19,7 +19,7 @@ in
     ./nixpkgs.nix
     ./core.nix
     "${disko}/module.nix"
-    impermanence.nixosModules.impermanence
+    ./impermanence.nix
     "${nixos-facter-modules}/modules/nixos/facter.nix"
     nix-maid.nixosModules.default
     ./security

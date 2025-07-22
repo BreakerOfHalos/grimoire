@@ -26,5 +26,5 @@
     };
   };
 
-  config.facter.reportPath = ./facter.json;
+  facter.reportPath = ./facter.json;
 }

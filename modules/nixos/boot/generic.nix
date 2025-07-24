@@ -18,7 +18,7 @@ in
       };
 
     kernel = lib.mkOption {
-      type = lib.type.raw;
+      type = lib.types.raw;
       default = pkgs.linuxPackages_latest;
       description = "The kernel to use for the system.";
     };
@@ -45,7 +45,7 @@ in
         Extra kernel parameters to be passed to the kernel.
         This is useful for passing additional parameters to the kernel
         that are not covered by the default parameters.
-      ''
+      '';
     };
 
     extraModulePackages = lib.mkOption {
@@ -69,13 +69,13 @@ in
 
       # whether to enable support for Linux MD RAID arrays
       # as of 23.11>, this throws a warning if neither MAILADDR nor PROGRAM are set
-      swraid.enable = mkDefault false;
+      swraid.enable = lib.mkDefault false;
 
       # shared config between bootloaders
       # they are set unless system.boot.loader != none
       loader = {
         # if set to 0, space needs to be held to get the boot menu to appear
-        timeout = mkForce 2;
+        timeout = lib.mkForce 2;
 
         # copy boot files to /boot so that /nix/store is not required to boot
         # it takes up more space but it makes my messups a bit safer
@@ -96,7 +96,7 @@ in
 
         # If not using tmpfs, which is naturally purged on reboot, we must clean
         # we have to clean /tmp
-        cleanOnBoot = mkDefault (!config.boot.tmp.useTmpfs);
+        cleanOnBoot = lib.mkDefault (!config.boot.tmp.useTmpfs);
 
         # this defaults to 50% of your ram
         # but i want to build code sooo
@@ -194,7 +194,8 @@ in
           # rd prefix means systemd-udev will be used instead of initrd
           "systemd.show_status=auto"
           "rd.systemd.show_status=auto"
-        ]
+        ];
+      };
     };
-  };
-}
+  }
+

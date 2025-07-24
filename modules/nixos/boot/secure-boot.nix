@@ -5,8 +5,8 @@
 }:
 let
   sys = config.grimoire.system.boot;
-  sources = ../../npins;
-  lanzaboote = sources.lanzaboote;
+  sources = import ../../../npins;
+  lanzaboote = import sources.lanzaboote;
 in
 {
   # https://wiki.nixos.org/wiki/Secure_Boot
@@ -18,10 +18,10 @@ in
   '';
 
   config = lib.mkIf sys.secureBoot {
-    grimoire.packages = { inherit (pkgs) sbctl; };
+    environment.systemPackages = { inherit (pkgs) sbctl; };
 
     # Lanzaboote replaces the systemd-boot module.
-    boot.loader.systemd-boot.enable = mkForce false;
+    boot.loader.systemd-boot.enable = lib.mkForce false;
 
     boot = {
       bootspec.enable = true;

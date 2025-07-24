@@ -5,7 +5,7 @@
 {
   imports = [
     ../../modules
-    ./void-disk-configuration.nix
+    ./void-disk-config.nix
   ];
 
   networking.hostName = "void";
@@ -23,6 +23,8 @@
 
     system = {
       printing.enable = true;
+
+      boot.loader = "systemd-boot";
     };
   };
 

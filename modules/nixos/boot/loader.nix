@@ -33,13 +33,7 @@ in
     })
 
     (lib.mkIf (cfg.loader == "systemd-boot") {
-      boot.loader = {
-        timeout = lib.mkForce 2;
-        generationsDir.copyKernels = true;
-        efi.canTouchEfiVariables = true;
-      };
-
-      systemd-boot = {
+      boot.loader.systemd-boot = {
         enable = lib.mkDefault true;
         configurationLimit = 15;
         consoleMode = lib.mkDefault "max";

@@ -10,11 +10,11 @@ let
 
   sources = import ../../npins;
   
-  NIX_PATH =
-    let
-      entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
-    in
-    "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
+  # NIX_PATH =
+  #   let
+  #     entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
+  #   in
+  #   "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
   # Near as I can tell, this exposes all the sources in all other modules.
   specialArgs = {
     inherit
@@ -25,13 +25,38 @@ let
   };
 in
 {
+  _module.args = specialArgs;
   system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = lib.mkDefault "America/Los_Angeles";
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   fonts.enableDefaultPackages = true;
-  nix.nixPath = [ NIX_PATH ];
+  # nix.nixPath = [ NIX_PATH ];
+
+  nixpkgs = {
+    flake.source = sources.nixpkgs;
+    config.allowUnfree = true;
+    overlays = [
+      (
+        final: prev:
+        lib.mapAttrs
+          (
+            k: overrides:
+            prev.${k}.overrideAttrs (
+              oldAttrs:
+              {
+                src = sources.${k};
+              }
+              // (overrides k oldAttrs)
+            )
+          )
+          {
+            
+          }
+      )
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     # CLI base tools

@@ -31,8 +31,17 @@ in
         };
 
         yubikey = lib.mkEnableOption "YukiKey Support";
+
+        bluetooth = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+          description = "Whether or not the system has bluetooth support.";
+        };
       };
     };
+
+    system.bluetooth.enable = lib.mkEnableOption "Should the device load bluetooth drivers and enable blueman.";
+    
   };
 
   config = lib.mkMerge [
@@ -94,6 +103,25 @@ in
       environment.systemPackages = [
         pkgs.yubikey-manager # cli
       ];
+    })
+
+    (lib.mkIf sys.bluetooth.enable {
+      grimoire.system.boot.extraKernelParams = [ "btusb" ];
+
+      hardware.bluetooth = {
+        enable = true;
+        package = pkgs.bluez;
+        powerOnBoot = true;
+        disabledPlugins = [ "sap" ];
+        settings = {
+          General = {
+            JustWorksRepairing = "always";
+            MultiProfile = "multiple";
+          };
+        };
+      };
+
+      services.blueman.enable = true;
     })
   ];
 }

@@ -46,7 +46,7 @@
         bat.source = ./bat;
         btop.source = ./btop;
         fastfetch.source = ./fastfetch;
-        firefox.source = ./firefox;
+        # firefox.source = ./firefox;
         fish.source = ./fish;
         fuzzel.source = ./fuzzel;
         ghostty.source = ./ghostty;

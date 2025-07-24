@@ -56,11 +56,11 @@
         mako.source = ./mako;
         niri.source = ./niri;
         nushell.source = ./nushell;
-        quickshell.source = ./quickshell;
+        # quickshell.source = ./quickshell;
         starship.source = ./starship.toml;
         waybar.source = ./waybar;
-        yazi.source = ./yazi;
-        zellij.source = ./zellij;
+        # yazi.source = ./yazi;
+        # zellij.source = ./zellij;
         "nushell/nix-your-shell.nu".source = pkgs.nix-your-shell.generate-config "nu";
       };
     };

@@ -20,9 +20,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "79264292b7e3482e5702932949de9cbb69fedf6d",
+      "revision": "545aba02960caa78a31bd9a8709a0ad4b6320a5c",
       "url": null,
-      "hash": "sha256-7LYDxKxZgBQ8LZUuolAQ8UkIB+jb4A2UmiR+kzY9CLI="
+      "hash": "sha256-7lrVrE0jSvZHrxEzvnfHFE/Wkk9DDqb+mYCodI5uuB8="
     },
     "impermanence": {
       "type": "Git",
@@ -71,9 +71,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "dfb47763ee7daaf2d7935844f21f9733f5b7ec9b",
+      "revision": "bf9cac33b417af732dd7c9626c1846d0132cfd27",
       "url": null,
-      "hash": "sha256-4SWI8Wn8FaXxsmVHF8Sx+aTxI2h4juieylWSklD83Ts="
+      "hash": "sha256-OBRN1DqwitwxymeuNGEouTvRIPqMEbMQM5cvXfZvDPQ="
     },
     "nixos-facter-modules": {
       "type": "Git",
@@ -90,8 +90,21 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre827262.be9e214982e2/nixexprs.tar.xz",
-      "hash": "sha256-lUi+sPH7Kuh9uP3PyfgbENcJGReUM8Ffk9GxGBFbSN8="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre834687.6027c30c8e98/nixexprs.tar.xz",
+      "hash": "sha256-Ba/cFHWBoCISrKBcqU8kH/8LJXYUj2kfFz7l7a7RwMU="
+    },
+    "npins": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "andir",
+        "repo": "npins"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "afa9fe50cb0bff9ba7e9f7796892f71722b2180d",
+      "url": "https://github.com/andir/npins/archive/afa9fe50cb0bff9ba7e9f7796892f71722b2180d.tar.gz",
+      "hash": "sha256-D6dYAMk9eYpBriE07s8Q7M3WBT7uM9pz3RKIoNk+h7I="
     },
     "wrapper-manager": {
       "type": "Git",
@@ -113,9 +126,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "1a40cdcb093a0025631ef692caa53130f821dd77",
+      "revision": "c92c1bf9cfe96b9f09c867b818a83c13f81dde3b",
       "url": null,
-      "hash": "sha256-84tAzrC/kioWRmG0jLt1HWRP/wHON7zjLtXCwWRNI/g="
+      "hash": "sha256-1Jn/Jy+qvPqWDGU+Mabixz2C3xOdZKr2Cb62WuRz9UQ="
     }
   },
   "version": 6

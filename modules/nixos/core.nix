@@ -26,7 +26,7 @@ let
 in
 {
   _module.args = specialArgs;
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = lib.mkDefault "America/Los_Angeles";
   hardware.bluetooth.enable = true;

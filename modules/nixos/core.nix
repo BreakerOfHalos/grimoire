@@ -71,13 +71,6 @@ in
     fish.enable = true;
   };
 
-  services = {
-    userborn = {
-      enable = true;
-      # passwordFilesLocation = "/persistent/etc";
-    };
-  };
-
   zramSwap = {
     enable = true;
     algorithm = "zstd";

@@ -13,7 +13,6 @@ in
   users.users.${user} = {
     uid = 1000;
     isNormalUser = true;
-    initialPassword = "changeme";
 
     home = "/home/${user}";
 
@@ -44,6 +43,4 @@ in
         "cloudflared"
       ];
   };
-
-  users.users.root.initialPassword = "changeme";
 }

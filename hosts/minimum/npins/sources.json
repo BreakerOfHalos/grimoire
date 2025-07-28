@@ -1,0 +1,135 @@
+{
+  "pins": {
+    "agenix": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/ryantm/agenix.git"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "531beac616433bac6f9e2a19feb8e99a22a66baf",
+      "url": null,
+      "hash": "sha256-9P1FziAwl5+3edkfFcr5HeGtQUtrSdk/MksX39GieoA="
+    },
+    "disko": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/disko.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "545aba02960caa78a31bd9a8709a0ad4b6320a5c",
+      "url": null,
+      "hash": "sha256-7lrVrE0jSvZHrxEzvnfHFE/Wkk9DDqb+mYCodI5uuB8="
+    },
+    "impermanence": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/impermanence.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+      "url": null,
+      "hash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI="
+    },
+    "lanzaboote": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/lanzaboote.git"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.4.2",
+      "revision": "f0212638a2ec787a7841882f4477d40ae24f0a5d",
+      "url": null,
+      "hash": "sha256-AEEDktApTEZ5PZXNDkry2YV2k6t0dTgLPEmAZbnigXU="
+    },
+    "lix-module": {
+      "type": "Tarball",
+      "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz",
+      "locked_url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/8b1094356f4723d6e89d3f8a95b333ee16d9ab02.tar.gz?rev=8b1094356f4723d6e89d3f8a95b333ee16d9ab02",
+      "hash": "sha256-SXUAlxpjPRkArRMHy5+Hdi+PiC+ND9yzzIjiaHmTvQU="
+    },
+    "lixSrc": {
+      "type": "Tarball",
+      "url": "https://git.lix.systems/lix-project/lix/archive/2.93.2.tar.gz",
+      "locked_url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/22be6ff62626c8cdbb9cdb59a3e4bd910fedd0d6.tar.gz?rev=22be6ff62626c8cdbb9cdb59a3e4bd910fedd0d6",
+      "hash": "sha256-J4ycLoXHPsoBoQtEXFCelL4xlq5pT8U9tNWNKm43+YI="
+    },
+    "nix-maid": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/viperML/nix-maid.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "bf9cac33b417af732dd7c9626c1846d0132cfd27",
+      "url": null,
+      "hash": "sha256-OBRN1DqwitwxymeuNGEouTvRIPqMEbMQM5cvXfZvDPQ="
+    },
+    "nixos-facter-modules": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/nix-community/nixos-facter-modules.git"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "14df13c84552a7d1f33c1cd18336128fbc43f920",
+      "url": null,
+      "hash": "sha256-uP9Xxw5XcFwjX9lNoYRpybOnIIe1BHfZu5vJnnPg3Jc="
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre834687.6027c30c8e98/nixexprs.tar.xz",
+      "hash": "sha256-Ba/cFHWBoCISrKBcqU8kH/8LJXYUj2kfFz7l7a7RwMU="
+    },
+    "npins": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "andir",
+        "repo": "npins"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "afa9fe50cb0bff9ba7e9f7796892f71722b2180d",
+      "url": "https://github.com/andir/npins/archive/afa9fe50cb0bff9ba7e9f7796892f71722b2180d.tar.gz",
+      "hash": "sha256-D6dYAMk9eYpBriE07s8Q7M3WBT7uM9pz3RKIoNk+h7I="
+    },
+    "wrapper-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/viperML/wrapper-manager.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "8ad2484b485acad0632cb0af15b5eb704e3c1d0a",
+      "url": null,
+      "hash": "sha256-np2RxS8tRz/jGfUSYKxzg7cCi4dS8PL8gutLZfPMbIY="
+    },
+    "zen-browser-flake": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/youwen5/zen-browser-flake.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "c92c1bf9cfe96b9f09c867b818a83c13f81dde3b",
+      "url": null,
+      "hash": "sha256-1Jn/Jy+qvPqWDGU+Mabixz2C3xOdZKr2Cb62WuRz9UQ="
+    }
+  },
+  "version": 6
+}

@@ -39,31 +39,26 @@ in
     config.allowUnfree = true;
     overlays = [
       (
-        final: prev:
-        lib.mapAttrs
-          (
-            k: overrides:
-            prev.${k}.overrideAttrs (
-              oldAttrs:
-              {
-                src = sources.${k};
-              }
-              // (overrides k oldAttrs)
-            )
-          )
-          {
-            
-          }
+        final: prev: {
+          npins = final.callPackage (
+            sources.npins {
+              pkgs = final;
+            } + "/npins.nix"
+          ) {};
+        }
       )
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    # CLI base tools
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      # CLI base tools
       uutils-coreutils-noprefix
       rage
       age-plugin-1p
-  ];
+      npins
+    ;
+  };
 
   programs = {
     _1password.enable = true;

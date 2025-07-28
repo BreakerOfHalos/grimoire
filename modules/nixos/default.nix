@@ -5,8 +5,6 @@
 , ... }:
 let
   sources = import ../../npins;
-  npinsSources = import (sources.npins + "/npins");
-  npinsPkgs = import npinsSources.nixpkgs { };
   disko = sources.disko;
   nix-maid = import sources.nix-maid;
   nixos-facter-modules = sources.nixos-facter-modules;
@@ -15,8 +13,6 @@ let
   impermanence = sources.impermanence;
 in
 {
-  npinsPkgs.callPackage (sources.npins + "/npins.nix") {};
-
   imports = [
     (import "${lix-module}/module.nix" { lix = lixSrc; })
     ./boot

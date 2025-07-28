@@ -4,9 +4,7 @@
 let
   user = "breakerofhalos";
 
-  sources = import ../../npins;
-  npinsSources = import (sources.npins + "/npins");
-  npinsPkgs = import npinsSources.nixpkgs { };
+  sources = import ./npins;
   pkgs = import sources.nixpkgs {};
   disko = sources.disko;
   nix-maid = import sources.nix-maid;
@@ -15,14 +13,12 @@ let
   lixSrc = sources.lixSrc;
 in
 {
-  npinsPkgs.callPackage (sources.npins + "/npins.nix") {}
-
   imports = [
     (import "${lix-module}/module.nix" { lix = lixSrc; })
     "${disko}/module.nix"
     "${nixos-facter-modules}/modules/nixos/facter.nix"
     nix-maid.nixosModules.default
-    ../../modules/maid
+    ./void-disk-config.nix
   ];
 
   nix.settings = {
@@ -30,7 +26,6 @@ in
   };
 
   system.stateVersion = "25.05";
-  system.stateVersion = "24.11";
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = lib.mkDefault "America/Los_Angeles";
   hardware.bluetooth.enable = true;
@@ -38,14 +33,44 @@ in
   fonts.enableDefaultPackages = true; 
   facter.reportPath = ./facter.json;
 
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
+  boot.initrd.luks.devices = {
+    crypted = {
+      device = "/dev/disk/by-partlabel/luks";
+      allowDiscards = true;
+    };
+  };
+
   nixpkgs = {
     flake.source = sources.nixpkgs;
     config.allowUnfree = true;
+    overlays = [
+      (
+        final: prev: {
+          npins = final.callPackage (
+            sources.npins {
+              pkgs = final;
+            } + "/npins.nix"
+          ) {};
+        }
+      )
+    ];
   };
+
+  networking= {
+    networkmanager.enable = true;
+    hostName = "void";
+  };
+
+  services.openssh.enable = true;
 
   programs = {
     fish.enable = true;
-  }
+  };
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
@@ -67,7 +92,8 @@ in
     ];
 
     packages = builtins.attrValues {
-      inhert (pkgs)
+      inherit (pkgs)
+        npins
         jaq
         starship
         zoxide

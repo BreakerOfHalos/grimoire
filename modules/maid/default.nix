@@ -9,36 +9,6 @@
   ];
 
   users.users.breakerofhalos.maid = { 
-    packages = builtins.attrValues {
-      inherit (pkgs)
-        starship
-        zoxide
-        eza
-        yazi
-        fzf
-        btop
-        hyfetch
-        helix
-        anyrun
-        obsidian
-        flameshot
-        obs-studio
-        morgen
-        orca-slicer
-        discordo
-        moonlight
-        # nheko # currently insecure
-        junction
-        quickshell
-        ghostty
-        fuzzel
-        vivaldi
-        nix-your-shell
-        nil
-        nixpkgs-fmt
-        ;
-      };
-
     file = {
       xdg_config = {
         alacritty.source = ./alacritty;

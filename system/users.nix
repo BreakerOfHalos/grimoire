@@ -3,18 +3,16 @@
 , pkgs
 , user
 , sources
-, grimoireLib
 , ... }:
 let
-  grimoireLib = import ./lib { inherit lib; };
-  user = "breakerofhalos";
+  ifTheyExist = config: groups: lib.filter (group: lib.hasAttr group config.users.groups) groups;
 in
 {
-  users.users.${user} = {
+  users.users.breakerofhalos = {
     uid = 1000;
     isNormalUser = true;
 
-    home = "/home/${user}";
+    home = "/home/breakerofhalos";
 
     shell = pkgs.fish;
 
@@ -23,7 +21,7 @@ in
         "wheel"
         "nix"
       ]
-      ++ grimoireLib.ifTheyExist config [
+      ++ ifTheyExist config [
         "network"
         "networkmanager"
         "systemd-journal"

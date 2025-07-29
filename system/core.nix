@@ -1,12 +1,9 @@
 { lib
 , pkgs
 , config
-, grimoireLib
 , ... }:
 let
   user = "breakerofhalos";
-
-  grimoireLib = import ./lib { inherit lib; };
 
   sources = import ../../npins;
   
@@ -20,7 +17,6 @@ let
     inherit
       sources
       user
-      grimoireLib
       ;
   };
 in

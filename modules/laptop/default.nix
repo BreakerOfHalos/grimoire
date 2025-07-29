@@ -8,6 +8,10 @@ let
   MHz = x: x * 1000;
 in
 {
+  options.grimoire.profiles = {
+    laptop.enable = lib.mkEnableOption "Laptop";
+  };
+  
   config = lib.mkIf config.grimoire.profiles.laptop.enable {
     # superior power management, littrally saves this crummy laptop
     # you have no clue how annoying it is when I have to update this on nixpkgs

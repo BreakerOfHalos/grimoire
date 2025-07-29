@@ -53,6 +53,7 @@ in
       rage
       age-plugin-1p
       npins
+      networkmanagerapplet
     ;
   };
 

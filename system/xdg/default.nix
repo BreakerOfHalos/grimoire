@@ -7,35 +7,27 @@ let
   XDG_RUNTIME_DIR = "/run/user/$UID";
 in
 {
-  simple = {
-    dataHome = XDG_DATA_HOME;
-    configHome = XDG_CONFIG_HOME;
-    cacheHome = XDG_CACHE_HOME;
-  };
+  environment = {
+    variables = {
+      inherit
+        XDG_CONFIG_HOME
+        XDG_CACHE_HOME
+        XDG_DATA_HOME
+        XDG_STATE_HOME
+        XDG_BIN_HOME
+        XDG_RUNTIME_DIR
+        ;
+      PATH = [ "$bin" ];
+    };
 
-  # Global env
-  golbal = {
-    inherit
-      XDG_CONFIG_HOME
-      XDG_CACHE_HOME
-      XDG_DATA_HOME
-      XDG_STATE_HOME
-      XDG_BIN_HOME
-      XDG_RUNTIME_DIR
-      ;
-    PATH = [ "$bin" ];
-  };
-
-  user =
-    xdg:
+    sessionVariables = 
     let
-      data = xdg.dataHome;
-      config = xdg.configHome;
-      cache = xdg.cacheHome;
+      data = XDG_DATA_HOME;
+      config = XDG_CONFIG_HOME;
+      cache = XDG_CACHE_HOME;
     in
     {
       # desktop
-      KDEHOME = "${config}/kde";
       XCOMPOSECACHE = "${cache}/X11/xcompose";
       ERRFILE = "${cache}/X11/xsession-errors";
       WINEPREFIX = "${data}/wine";
@@ -51,4 +43,5 @@ in
       IPYTHONDIR = "${config}/ipython";
       JUPYTER_CONFIG_DIR = "${config}/jupyter";
     };
+  };
 }

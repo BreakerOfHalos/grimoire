@@ -10,7 +10,7 @@ let
 in
 {
   # https://wiki.nixos.org/wiki/Secure_Boot
-  # Secure Boot, my love keeping my valorant working on windows
+  # Secure Boot
   imports = [ lanzaboote.nixosModules.lanzaboote ];
 
   options.grimoire.system.boot.secureBoot = lib.mkEnableOption ''

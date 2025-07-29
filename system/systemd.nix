@@ -1,9 +1,36 @@
-{ lib, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 let
-  inherit (lib) mkDefault;
+  extraConfig = ''
+    DefaultTimeoutStartSec=15s
+    DefaultTimeoutStopSec=15s
+    DefaultTimeoutAbortSec=15s
+    DefaultDeviceTimeoutSec=15s
+  '';
 in
 {
   systemd = {
+    inherit extraConfig;
+    user = { inherit extraConfig; };
+
+    services =
+      lib.genAttrs
+        [
+          "getty@tty1"
+          "autovt@tty1"
+          "getty@tty7"
+          "autovt@tty7"
+          "kmsconvt@tty1"
+          "kmsconvt@tty7"
+        ]
+        (_: {
+          enable = false;
+        });
+    services."serial-getty@".environment.TERM = "xterm-256color";
+
     # Systemd OOMd
     # Fedora enables these options by default. See the 10-oomd-* files here:
     # https://src.fedoraproject.org/rpms/systemd/tree/acb90c49c42276b06375a66c73673ac3510255

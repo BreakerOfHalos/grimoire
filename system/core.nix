@@ -3,8 +3,6 @@
 , config
 , ... }:
 let
-  user = "breakerofhalos";
-
   sources = import ../../npins;
   
   # NIX_PATH =
@@ -16,7 +14,6 @@ let
   specialArgs = {
     inherit
       sources
-      user
       ;
   };
 in

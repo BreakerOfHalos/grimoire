@@ -1,8 +1,21 @@
 { lib, ... }:
 {
   imports = [ ./earlyoom.nix ];
-  
+
   services = {
+    # discard blocks that are not in use by the filesystem, good for SSDs health
+    fstrim = {
+      enable = true;
+      interval = "weekly";
+    };
+
+    # clean btrfs devices
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "weekly";
+      fileSystems = [ "/" ];
+    };
+
     # monitor and control temperature
     thermald.enable = true;
 

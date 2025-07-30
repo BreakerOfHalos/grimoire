@@ -61,9 +61,6 @@
 
         # This lets us use cgroups for builds, as long as `use-cgroups.enable = true;` is set
         "cgroups"
-
-        # Laying pipe
-        # "pipe-operator"
       ];
 
       # Adds more connections for imports and caches.

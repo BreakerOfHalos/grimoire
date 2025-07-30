@@ -26,5 +26,17 @@ in
     permittedInsecurePackages = [ "mono-5.20.1.34" ];
     allowUnsupportedSystems = true;
     allowAliases = false;
+    flake.source = sources.nixpkgs;
+    overlays = [
+      (
+        final: prev: {
+          npins = final.callPackage (
+            sources.npins {
+              pkgs = final;
+            } + "/npins.nix"
+          ) {};
+        }
+      )
+    ];
   };
 }

@@ -218,13 +218,6 @@ in
           "sysv" # implements all of Xenix FS, SystemV/386 FS and Coherent FS.
           "udf" # https://docs.kernel.org/5.15/filesystems/udf.html
         ]
-
-        (lib.optionals (!sys.security.fixWebcam) [ "uvcvideo" ])
-
-        (lib.optionals (!sys.bluetooth.enable) [
-          "bluetooth"
-          "btusb" # Bluetooth dongles
-        ])
       ]; 
     };
   };

@@ -3,7 +3,7 @@
 , config
 , ... }:
 let
-  sources = import ../../npins;
+  sources = import ../npins;
   
   # NIX_PATH =
   #   let
@@ -23,25 +23,8 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = lib.mkDefault "America/Los_Angeles";
   hardware.bluetooth.enable = true;
-  networking.networkmanager.enable = true;
   fonts.enableDefaultPackages = true;
   # nix.nixPath = [ NIX_PATH ];
-
-  nixpkgs = {
-    flake.source = sources.nixpkgs;
-    config.allowUnfree = true;
-    overlays = [
-      (
-        final: prev: {
-          npins = final.callPackage (
-            sources.npins {
-              pkgs = final;
-            } + "/npins.nix"
-          ) {};
-        }
-      )
-    ];
-  };
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
@@ -52,12 +35,6 @@ in
       npins
       networkmanagerapplet
     ;
-  };
-
-  programs = {
-    _1password.enable = true;
-    direnv.enable = true;
-    fish.enable = true;
   };
 
   zramSwap = {
@@ -75,10 +52,5 @@ in
     "vm.watermark_scale_factor" = 125;
     # zram is in memory, no need to readahead
     "vm.page-cluster" = 0;
-  };
-
-  environment = {
-    variables = grimoireLib.xdg.global;
-    sessionVariables = grimoireLib.xdg.user grimoireLib.xdg.simple;
   };
 }  

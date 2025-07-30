@@ -4,7 +4,7 @@
 , grimioreLib
 , ... }:
 let
-  sources = import ../../npins;
+  sources = import ../npins;
   disko = sources.disko;
   nixos-facter-modules = sources.nixos-facter-modules;
   lix-module = sources.lix-module;

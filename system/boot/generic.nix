@@ -119,6 +119,9 @@ in
             "btrfs"
             "sd_mod"
             "dm_mod"
+            "bluetooth"
+            "btusb"
+            "uvcvideo"
           ];
 
           availableKernelModules = [

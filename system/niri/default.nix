@@ -4,7 +4,7 @@
 }:
 {
   imports = [ ./niri.nix ];
-  
+
   location.provider = "geoclue2";
 
   qt = {
@@ -29,6 +29,11 @@
 
     # 1Password, ofc
     _1password-gui.enable = true;
+
+    waybar = {
+      enable = true;
+      systemd.target = "niri-session";
+    };
   };
 
   services = {

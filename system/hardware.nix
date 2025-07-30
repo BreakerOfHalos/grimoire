@@ -45,23 +45,6 @@ in
   };
 
   config = lib.mkMerge [
-    {
-      # discard blocks that are not in use by the filesystem, good for SSDs health
-      services.fstrim = {
-        enable = true;
-        interval = "weekly";
-      };
-    }
-
-    # clean btrfs devices
-    (lib.mkIf hasBtrfs {
-      services.btrfs.autoScrub = {
-        enable = true;
-        interval = "weekly";
-        fileSystems = [ "/" ];
-      };
-    })
- 
     (lib.mkIf config.grimoire.device.capabilities.tpm {
       security.tpm2 = {
         # enable Trusted Platform Module 2 support

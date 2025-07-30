@@ -11,11 +11,6 @@ in
     enableKernelTweaks = lib.mkEnableOption "Security and performance related kernel parameters";
     recommendedLoaderConfig = lib.mkEnableOption "Tweaks for common bootloader configs per my liking";
     loadRecommendedModules = lib.mkEnableOption "Kernel modules that accomodate most use cases.";
-    tmpOnTmpfs = 
-      lib.mkEnableOption "`/tmp` living on tmpfs. `false` means that it will be cleared manually on each reboot"
-      // {
-        default = true;
-      };
 
     kernel = lib.mkOption {
       type = lib.type.raw;
@@ -89,21 +84,9 @@ in
       # such as games and emulators
       kernel.sysctl."vm.max_map_count" = 2147483642;
 
-      # If you have a lack of ram, you should avoid tmpfs to prevent hangups while compiling
       tmp = {
-        # /tmp on tmpfs, lets it live on your ram
-        useTmpfs = cfg.tmpOnTmpfs;
-
-        # If not using tmpfs, which is naturally purged on reboot, we must clean
         # we have to clean /tmp
-        cleanOnBoot = mkDefault (!config.boot.tmp.useTmpfs);
-
-        # this defaults to 50% of your ram
-        # but i want to build code sooo
-        # tmpfsSize = mkDefault "75%";
-
-        # enable huge pages on tmpfs for better performance
-        tmpfsHugeMemoryPages = "within_size";
+        cleanOnBoot = true;
       };
 
       initrd = lib.mkMerge [

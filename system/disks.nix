@@ -2,8 +2,20 @@
 {
   staypls = {
     enable = true;
-    dirs = ["/etc/ssh" "/etc/NetworkManager" "/etc/nix" "/var/lib/fprint" "/var/lib/pipewire" "/var/lib/bluetooth"];
+    dirs = [
+      "/etc/ssh" 
+      "/etc/NetworkManager" 
+      "/etc/nix" 
+      "/var/lib/fprint" 
+      "/var/lib/pipewire" 
+      "/var/lib/bluetooth"
+      "/etc/secureboot"
+      "/etc/wireguard"
+      "/var/db/sudo"
+    ];
   };
+
+  environment.etc."machine-id".source = "/persist/etc/machine-id";
 
   boot.initrd.luks.devices.luksroot = {
     device = "/dev/disk/by-label/NIXCRYPT";

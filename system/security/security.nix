@@ -19,42 +19,36 @@ let
   };
 in
 {
-  security.pam = lib.mkMerge [
-    {
-      # fix "too many files open" errors while writing a lot of data at once
-      # was previously a huge issue when rebuilding
-      loginLimits = [
-        {
-          domain = "@wheel";
-          item = "nofile";
-          type = "soft";
-          value = "524288";
-        }
-        {
-          domain = "@wheel";
-          item = "nofile";
-          type = "hard";
-          value = "1048576";
-        }
-      ];
+  security.pam = {
+    # fix "too many files open" errors while writing a lot of data at once
+    # was previously a huge issue when rebuilding
+    loginLimits = [
+      {
+        domain = "@wheel";
+        item = "nofile";
+        type = "soft";
+        value = "524288";
+      }
+      {
+        domain = "@wheel";
+        item = "nofile";
+        type = "hard";
+        value = "1048576";
+      }
+    ];
 
-      # allow screen lockers to also unlock the screen
-      # (e.g. swaylock, gtklock)
-      services = {
-        swaylock.text = "auth include login";
-        gtklock.text = "auth include login";
-        hyprlock.text = "auth include login";
-      };
-    }
+    # allow screen lockers to also unlock the screen
+    # (e.g. hyprlock)
+    services = {
+      hyprlock.text = "auth include login";
+    };
 
-    (lib.mkIf config.grimoire.profiles.graphical.enable {
-      services = lib.genAttrs services (_: mkService);
-    })
-  ];
+    services = lib.genAttrs services (_: mkService);
+  };
 
   security = {
     polkit.enable = true;
-    soteria.enable = config.grimoire.profiles.graphical.enable;
+    soteria.enable = true;
     protectKernelImage = true;
     lockKernelModules = false; # breaks virtd, wireguard and iptables
 

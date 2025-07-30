@@ -6,7 +6,7 @@
     command-not-found.enable = false;
 
     # like `thefuck`, but in rust and actually maintained
-    pay-respects.enable = config.grimoire.profiles.graphical.enable;
+    pay-respects.enable = true;
 
     # pager
     less = {
@@ -16,6 +16,12 @@
 
     # Password manager is critical
     _1password.enable = true;
+
+    # 1Password, ofc
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "breakerofhalos" ];
+    };
 
     # Directory environments
     direnv.enable = true;

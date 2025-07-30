@@ -27,9 +27,6 @@
     # And a screen locker
     hyprlock.enable = true;
 
-    # 1Password, ofc
-    _1password-gui.enable = true;
-
     waybar = {
       enable = true;
       systemd.target = "niri-session";

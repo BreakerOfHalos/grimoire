@@ -25,6 +25,9 @@ in
   hardware.bluetooth.enable = true;
   fonts.enableDefaultPackages = true;
   # nix.nixPath = [ NIX_PATH ];
+  environment.etc = {
+    "nixos/nixpkgs".source = builtins.storePath pkgs.path;
+  };
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)

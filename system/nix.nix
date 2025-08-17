@@ -7,6 +7,8 @@
     # Killing channels per https://jade.fyi/blog/pinning-nixos-with-npins/
     channel.enable = false;
 
+    nix.nixPath = [ "nixpkgs=/etc/nixos/nixpkgs" ];
+
     # Automatic garbage collection, of course.
     gc = {
       automatic = true;

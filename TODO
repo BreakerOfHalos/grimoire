@@ -1,9 +1,9 @@
-- [ ] Clean up the lib and xdg templates
+- [x] Clean up the lib and xdg templates
 	- It's failing to build because the fuction wasn't doing anything.
 	- It needs outputs, and to expose the xdg templates in a usable way.
 	- There's a possiblity that I'm not reusing any of the code,
 	- so it's not really a lib, it's just unimportant abstraction.
-- [ ] Set up basic configs for my programs in maid.
+- [n] Set up basic configs for my programs in maid.
 	- [ ] Look at Hanna's configs.
 		- maid lets me borrow directly from standard style configs.
 - [ ] Look into changing keybinds based on input device. Might be impractical.
@@ -14,7 +14,7 @@
 	- [ ] Long term, rewrite the code so it handles the zip file directly
 		- Good for updates in this case. This would have also been the solution
 		- for the Talon updates. I see why proprietary software is a pain to pkg.
-- [ ] Map more stuff into the config framework like Isabel.
+- [n] Map more stuff into the config framework like Isabel.
 	- I see the point now, and the power it gives once you understand the
 	- framework. I should document it. It will make setting up lab machines
 	- much easier, and I don't have to fight the flake bullshit about
@@ -23,13 +23,24 @@
 	- file makes sense, mostly. The issue that I have is that I don't want
 	- to have to drill down into the hosts subdirectory to call a script
 	- that's the same in all of them, to originate the config.
-	- [ ] Top level configuration.nix that pulls the pieces together and maps it.
+	- [n] Top level configuration.nix that pulls the pieces together and maps it.
 		- This should be doable, with some shell scripting. Maybe I pass the
 		- hostname into the config? I don't want Nix to have to slowly parse
 		- all the hosts and the whole tree just to assemble one single machine.
 		- In other words, leaving the choice logic to nix seems less efficient.
 		- I could be wrong, and I don't like leaving a piece as variable.
-	- [ ] Remote builds also make this less of an issue.
+	- [n] Remote builds also make this less of an issue.
 		- Build on the powerful machine, and then it's cached binaries. This
 		- appeals, so it only *truly* builds the binaries once. I still have no
 		- clue how it works, or how to test it atm.
+- [ ] Finish modularizing niri.
+	- The goal is mostly here to make swapping WMs/DEs easier in the future.
+	- I want to leave a bit of flexibility in here in order to not have to rip it
+	- all apart later. That's why I'm breaking up all the supporting GUI stuff into
+	- the system as a whole.
+- [ ] Technically not for this, but I need to start building the server config.
+	- Separating out the server configs from the workstation ones is going to be better.
+	- Sioodmy is right, they don't belong together. It saves me eval time, and keeps things
+	- from ballooning in complexity, and decouples experimentation from stable cluster stuff.
+- [ ] Bring the dotfiles in, to be managed by hjem for now, until I wrap them, or something.
+	- hjem for now so it's easier to tweak(?), and I don't end up siloing configs in weird ways.

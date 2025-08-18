@@ -39,7 +39,6 @@
       system-features = [
         "nixos-test"
         "kvm"
-        "recursive-nix"
         "big-parallel"
       ];
 
@@ -56,7 +55,7 @@
         "nix-command"
 
         # I want the shiny lix toys, even if I'm not quite sure what they do.
-        # "lix-custom-sub-commands"
+        "lix-custom-sub-commands"
 
         # IDK seems neat and less annoying than having temp user ghosts.
         "auto-allocate-uids"
@@ -77,5 +76,13 @@
       # Using XDG base directories seems to make sense.
       use-xdg-base-directories = true;
     };
+  };
+
+  # Enabling the LSP because it should be there.
+  programs.nix-ld.enable = true;
+
+  # We don't want to build stuff on TMPFS according to sioodmy.
+  systemd.services.nix-daemon = {
+    environment.TMPDIR = "/var/tmp";
   };
 }

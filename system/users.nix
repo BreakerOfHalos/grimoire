@@ -1,9 +1,9 @@
-{ config
-, lib
-, pkgs
-, user
-, sources
-, ... }:
+{ 
+  config,
+  flake,
+  pkgs, 
+  ... 
+}:
 let
   ifTheyExist = config: groups: lib.filter (group: lib.hasAttr group config.users.groups) groups;
 in
@@ -12,9 +12,9 @@ in
     uid = 1000;
     isNormalUser = true;
 
-    home = "/home/breakerofhalos";
+    homix = true;
 
-    shell = pkgs.fish;
+    home = "/home/breakerofhalos";
 
     extraGroups =
       [
@@ -40,35 +40,5 @@ in
         "libvirtd"
         "cloudflared"
       ];
-
-    packages = builtins.attrValues {
-      inherit (pkgs)
-        starship
-        zoxide
-        eza
-        yazi
-        fzf
-        btop
-        hyfetch
-        helix
-        anyrun
-        obsidian
-        flameshot
-        obs-studio
-        morgen
-        orca-slicer
-        discordo
-        moonlight
-        # nheko # currently insecure
-        junction
-        quickshell
-        ghostty
-        fuzzel
-        vivaldi
-        nix-your-shell
-        nil
-        nixpkgs-fmt
-        ;
-    };
   };
 }

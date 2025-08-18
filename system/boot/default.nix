@@ -1,7 +1,4 @@
-{ lib
-, pkgs
-, config
-, ... }:
+{ ... }:
 {
   imports = [
     # keep-sorted start

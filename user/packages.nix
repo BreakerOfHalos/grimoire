@@ -9,6 +9,7 @@
       _1password-cli
       _1password-gui
       mpv
+      mullvad-vpn
       aerc
       bat
       zathura

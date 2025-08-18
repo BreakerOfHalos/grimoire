@@ -63,7 +63,7 @@ in
       allowedTCPPortRanges = [ ];
       allowedUDPPortRanges = [ ];
 
-      # allow servers to be pinnged, but not our clients
+      # No one's home.
       allowPing = false;
 
       # make a much smaller and easier to read log

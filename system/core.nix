@@ -2,32 +2,14 @@
 , pkgs
 , config
 , ... }:
-let
-  sources = import ../npins;
-  
-  # NIX_PATH =
-  #   let
-  #     entries = lib.mapAttrsToList (k: v: k + "=" + v) sources;
-  #   in
-  #   "${lib.concatStringsSep ":" entries}:flake=${sources.nixpkgs}:flake";
-  # Near as I can tell, this exposes all the sources in all other modules.
-  specialArgs = {
-    inherit
-      sources
-      ;
-  };
-in
 {
-  _module.args = specialArgs;
   system.stateVersion = "25.05";
+
   i18n.defaultLocale = "en_US.UTF-8";
+
   time.timeZone = lib.mkDefault "America/Los_Angeles";
-  hardware.bluetooth.enable = true;
+  
   fonts.enableDefaultPackages = true;
-  # nix.nixPath = [ NIX_PATH ];
-  environment.etc = {
-    "nixos/nixpkgs".source = builtins.storePath pkgs.path;
-  };
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)

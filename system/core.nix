@@ -11,6 +11,8 @@
 
   fonts.enableDefaultPackages = true;
 
+  hardware.graphics.enable = true;
+
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       # CLI base tools

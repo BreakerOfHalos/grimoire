@@ -44,18 +44,6 @@ in
     };
 
     systemd = {
-      services.seatd = {
-        enable = true; 
-        description = "Seat management daemon";
-        script = "${lib.getExe pkgs.seatd} -g wheel";
-        serviceConfig = {
-          Type = "simple";
-          Restart = "always";
-          RestartSec = "1";
-        };
-        wantedBy = [ "multi-user.target" ];
-      };
-
       user = {
         services.niri-flake-polkit = {
           description = "PolicyKit Authentication Agent provided by niri-flake";
@@ -99,15 +87,6 @@ in
           niri = common;
         };
       configPackages = [ pkgs.niri ];
-    };
-
-    hardware = {
-      graphics = {
-        enable = true;
-        extraPackages = [
-          pkgs.vpl-gpu-rt
-        ];
-      };
     };
   };
 }

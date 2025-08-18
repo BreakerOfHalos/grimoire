@@ -6,43 +6,52 @@
 {
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
-      _1password-cli
-      _1password-gui
-      mpv
-      mullvad-vpn
-      aerc
+      # shell tools
       bat
-      zathura
-      imv
-      unzip
-      yt-dlp
-      signal-desktop
-      tealdeer
-      starship
-      zoxide
-      eza
-      yazi
-      fzf
       btop
-      hyfetch
-      helix
-      anyrun
-      obsidian
-      flameshot
-      obs-studio
-      morgen
-      orca-slicer
-      discordo
-      moonlight
-      nheko # currently insecure
-      junction
-      quickshell
-      ghostty
-      fuzzel
-      vivaldi
+      eza
+      fzf
       nix-your-shell
+      nushell
+      starship
+      tealdeer
+      zoxide
+
+      # cli/tui programs
+      _1password-cli
+      aerc
+      discordo
+      helix
+      hyfetch
+      imv
+      yazi
+      yt-dlp
+
+      # utilities
+      age-plugin-1p
+      anyrun
+      fuzzel
+      junction
+      mullvad-vpn
       nil
       nixfmt
+      quickshell
+
+      # gui essentials
+      _1password-gui
+      flameshot
+      ghostty
+      moonlight
+      morgen
+      mpv
+      nheko
+      obs-studio
+      obsidian
+      orca-slicer
+      signal-desktop
+      unzip
+      vivaldi
+      zathura
       ;
   };
 }

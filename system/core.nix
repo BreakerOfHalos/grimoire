@@ -8,18 +8,51 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   time.timeZone = lib.mkDefault "America/Los_Angeles";
-  
+
   fonts.enableDefaultPackages = true;
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       # CLI base tools
-      uutils-coreutils-noprefix
-      rage
-      age-plugin-1p
-      npins
+      libnotify
+      nautilus
       networkmanagerapplet
+      pciutils
+      rage
+      usbutils
+      uutils-coreutils-noprefix
+      xdg-utils
     ;
+  };
+
+  programs = {
+    # We need dconf to interact with gtk
+    dconf.enable = true;
+
+    # GNOME's keyring manager
+    seahorse.enable = true;
+  };
+
+  services = {
+    # Disable chrony in favor of systemd-timesyncd
+    timesyncd.enable = lib.mkDefault true;
+    chrony.enable = lib.mkDefault false;
+
+    # Enable GVFS a userspace virtual filesystem
+    gvfs.enable = true;
+
+    # Storage daemon required for udiskie auto-mount
+    udisks2.enable = true;
+
+    udev.packages = [ pkgs.gnome-settings-daemon ];
+
+    dbus = {
+      enable = true;
+      # Use the faster dbus-broker instead of the classic dbus-daemon
+      implementation = "broker";
+
+      packages = builtins.attrValues { inherit (pkgs) dconf gcr udisks2; };
+    };
   };
 
   zramSwap = {

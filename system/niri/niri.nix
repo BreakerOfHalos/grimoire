@@ -37,21 +37,9 @@ in
     };
 
     environment = {
-      variables = {
-        NIXOS_OZONE_WL = "1";
-        MOZ_ENABLE_WAYLAND = "1";
-      };
-
       systemPackages = [
-        pkgs.libnotify
-        pkgs.xdg-utils
         pkgs.niri
-        pkgs.usbutils
-        pkgs.pciutils
         pkgs.xwayland-satellite
-        pkgs.nautilus
-        pkgs.tokyonight-gtk-theme
-        pkgs.nordzy-cursor-theme
       ];
     };
 

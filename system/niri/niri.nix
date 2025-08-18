@@ -3,9 +3,13 @@
 , config
 , ... }:
 let
-  cfg = config.grimoire.profiles.graphical;
+  cfg = config.grimoire.gui;
 in
 {
+  options = {
+
+  };
+
   config = lib.mkIf cfg.enable {
     # PAM settings in g/modules/nixos/security.nix
 

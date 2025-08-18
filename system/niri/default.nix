@@ -3,16 +3,9 @@
 , ...
 }:
 {
-  imports = [ ./niri.nix ];
-
-  location.provider = "geoclue2";
-
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
-
+  imports = [ 
+    ./niri.nix
+  ];
 
   programs = {
     # Enable our chosen window manager
@@ -69,19 +62,6 @@
     udisks2.enable = true;
 
     udev.packages = [ pkgs.gnome-settings-daemon ];
-
-    geoclue2 = {
-      enable = true;
-      enableWifi = true;
-      geoProviderUrl = "https://beacondb.net/v1/geolocate";
-      submissionUrl = "https://beacondb.net/v2/geosubmit";
-      submissionNick = "geoclue";
-
-      appConfig.gammastep = {
-        isAllowed = true;
-        isSystem = false;
-      };
-    };
 
     dbus = {
       enable = true;

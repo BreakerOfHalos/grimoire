@@ -1,0 +1,47 @@
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      _1password-cli
+      _1password-gui
+      mpv
+      aerc
+      bat
+      zathura
+      imv
+      unzip
+      yt-dlp
+      signal-desktop
+      tealdeer
+      starship
+      zoxide
+      eza
+      yazi
+      fzf
+      btop
+      hyfetch
+      helix
+      anyrun
+      obsidian
+      flameshot
+      obs-studio
+      morgen
+      orca-slicer
+      discordo
+      moonlight
+      nheko # currently insecure
+      junction
+      quickshell
+      ghostty
+      fuzzel
+      vivaldi
+      nix-your-shell
+      nil
+      nixfmt
+      ;
+  };
+}

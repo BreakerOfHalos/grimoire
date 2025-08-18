@@ -29,7 +29,7 @@
           let
             pkgs = nixpkgs.legacyPackages.${system};
           in
-            pkg.alejandra
+            pkg.nixfmt
       );
 
       devShells = forAllSystems (

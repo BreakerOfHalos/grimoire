@@ -1,21 +1,35 @@
+{
+  nixpgks,
+  self,
+  ...
+}:
 let
-  sources = import ../npins;
+  inherit (self) inputs;
+  mkHost = name: system:
+    nixpkgs.lib.nixosSystem {
+      modules =
+        [
+          {
+            networking.hostName = name;
+            nixpkgs.hostPlatform = system;
+          }
+
+          lix-module.nixosModules.default
+
+          hjem.nixosModules.default
+
+          ./${name}
+        ]
+        ++ builtins.attrValues self.nixosModules;
+
+      specialArgs = {
+        inherit inputs;
+        theme = (import ../user).theme nixpkgs.legacyPackages.${system};
+        flake = self;
+      };
+    };
 in
-(
-  { config, ... }:
-  {
-    imports = [
-      {
-        config.nixpkgs.pkgs = pkgs;
-      }
-      ../modules/nixos
-      (import sources.nix-maid).nixosModules.default
-      
-      # (let
-      #   module = import sources.lix-module;
-      #   lixSrc = import sources.lixSrc;
-      #   in import "${module}/module.nix" { lix = lixSrc; }
-      # )
-    ];
-  }
-)
+{
+  void = mkHost "void" "x86_64-linux";
+  yawmga = mkHost "yawmga" "x86_64-linux";
+}

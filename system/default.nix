@@ -2,15 +2,19 @@
 {
   imports = [
     ./boot
-    ./nixpkgs.nix
-    ./core.nix
-    ./security
-    ./hardware.nix
-    ./nix.nix
-    ./profiles
-    ./users.nix
-    ./system
+    ./gaming
+    ./hardware
     ./networking
+    ./security
+    ./services
+    ./core.nix
+    ./fonts.nix
+    ./nix.nix
+    ./nixpkgs.nix
+    ./systemd.nix
+    ./users.nix
+    ./wayland.nix
+    ./xdg.nix
   ];
 
 }

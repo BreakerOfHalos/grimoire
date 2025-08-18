@@ -1,6 +1,11 @@
 { lib, ... }:
 {
-  imports = [ ./earlyoom.nix ];
+  imports = [ 
+    ./earlyoom.nix
+    ./geoclue.nix
+    ./greetd.nix
+    ./seatd.nix
+  ];
 
   services = {
     # discard blocks that are not in use by the filesystem, good for SSDs health

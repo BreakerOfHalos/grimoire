@@ -71,6 +71,7 @@ pkgs:
       sizeVariant = [ "compact" ];
       iconVariant = [ "Dark" ];
     };
-    name = "Tokyonight-Dark";
+    name = "Tokyonight";
+    icon-name = "Tokyonight-Dark";
   };
 }

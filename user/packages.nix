@@ -32,10 +32,13 @@
       anyrun
       fuzzel
       junction
+      megasync
+      megatools
       mullvad-vpn
       nil
       nixfmt
       quickshell
+      wl-clipboard
 
       # gui essentials
       _1password-gui

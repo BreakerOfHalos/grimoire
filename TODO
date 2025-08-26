@@ -33,7 +33,7 @@
 		- Build on the powerful machine, and then it's cached binaries. This
 		- appeals, so it only *truly* builds the binaries once. I still have no
 		- clue how it works, or how to test it atm.
-- [ ] Finish modularizing niri.
+- [x] Finish modularizing niri.
 	- The goal is mostly here to make swapping WMs/DEs easier in the future.
 	- I want to leave a bit of flexibility in here in order to not have to rip it
 	- all apart later. That's why I'm breaking up all the supporting GUI stuff into

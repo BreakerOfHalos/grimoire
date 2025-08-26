@@ -23,32 +23,34 @@
       decompressFonts = true;
     };
 
-    packages = with pkgs; [ 
-      corefonts
+    packages = builtins.attrValues {
+      inherit (pkgs)
+        corefonts
 
-      source-sans
-      source-serif
+        source-sans
+        source-serif
 
-      dejavu_fonts
-      inter
+        dejavu_fonts
+        inter
+        lexend
 
-      noto-fonts
+        noto-fonts
 
-      # fonts for none latin languages
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
+        # fonts for non-latin languages
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
 
-      # install some emoji fonts
-      noto-fonts-color-emoji
-      material-icons
-      material-design-icons
+        # install some emoji fonts
+        noto-fonts-color-emoji
+        material-icons
+        material-design-icons
       
 
-      nerd-fonts.symbols-only
-      # pragmata-pro
-      # pragmata-pro-fraktur
-      # pragmata-pro-mono
-      # sys-font
-    ];
+        nerd-fonts.symbols-only
+        # pragmata-pro
+        # pragmata-pro-fraktur
+        # pragmata-pro-mono
+        # sys-font
+    };
   };
 }

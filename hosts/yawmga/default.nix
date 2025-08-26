@@ -1,31 +1,28 @@
-{ lib
-, config
-, pkgs
-, ... }:
+{ 
+  lib,
+  config,
+  pkgs,
+  ... 
+}:
 {
-  imports = [
-    ../../modules
-    ./hardware-configuration.nix
-  ];
+  gui.niri.enable = true;
 
-  networking.hostName = "yawmga";
+  hardware = {
+    laptop.enable = true;
+    
+    cpu.intel.updateMicrocode = true;
 
-  grimoire = {
-    profiles = {
-      graphical.enable = true;
-      # gaming.enable = true;
-      laptop.enable = true;
-    };
-
-    device.capabilities = {
-      yubikey = true;
-      tpm = true;
-     }; 
-
-    system = {
-      printing.enable = true;
-    };
+    graphics = {
+      enable = true;
+      extraPackages = builtins.attrValues {
+        inherit (pkgs)
+          intel-compute-runtime
+          intel-media-driver
+          libva
+          libdpau-va-gl
+          vpl-gpu-rt
+          ;        
+      };
+    }; 
   };
-
-  config.facter.reportPath = ./facter.json;
 }

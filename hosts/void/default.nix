@@ -1,7 +1,9 @@
-{ lib
-, config
-, pkgs
-, ... }:
+{ 
+  lib,
+  config,
+  pkgs,
+  ... 
+}:
 {
   gui.niri.enable = true;
 

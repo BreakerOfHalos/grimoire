@@ -30,6 +30,7 @@
       # utilities
       age-plugin-1p
       anyrun
+      chezmoi
       fuzzel
       junction
       megasync

@@ -4,7 +4,7 @@
 , pkgs
 , ... }: {
   nix = {
-    # Killing channels per https://jade.fyi/blog/pinning-nixos-with-npins/
+    # Killing channels
     channel.enable = false;
 
     nix.nixPath = [ "nixpkgs=/etc/nixos/nixpkgs" ];

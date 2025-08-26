@@ -1,6 +1,9 @@
 {
   imports = [
-    ./nixos
-    ./maid
+    ./homix
+    ./laptop
+    ./niri
+    ./secure-boot
+    ./tailscale
   ];
 }

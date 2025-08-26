@@ -1,22 +1,5 @@
 { ... }:
 {
-  staypls = {
-    enable = true;
-    dirs = [
-      "/etc/ssh" 
-      "/etc/NetworkManager" 
-      "/etc/nix" 
-      "/var/lib/fprint" 
-      "/var/lib/pipewire" 
-      "/var/lib/bluetooth"
-      "/etc/secureboot"
-      "/etc/wireguard"
-      "/var/db/sudo"
-    ];
-  };
-
-  environment.etc."machine-id".source = "/persist/etc/machine-id";
-
   boot.initrd.luks.devices.luksroot = {
     device = "/dev/disk/by-label/NIXCRYPT";
     preLVM = true;
@@ -25,11 +8,10 @@
   };
 
   fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    # if you need more than 1GB for root then
-    # you are doing something wrong
-    options = ["size=1G" "mode=755"];
+    neededForBoot = true;
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "btrfs";
+    options = ["noatime" "discard" "subvol=@root" "compress=zstd"];
   };
 
   fileSystems."/nix" = {
@@ -45,11 +27,10 @@
     options = ["noatime" "discard" "subvol=@tmp"];
   };
 
-  fileSystems."/persist" = {
-    neededForBoot = true;
+  fileSystems."/.snapshots" = {
     device = "/dev/disk/by-label/NIXROOT";
     fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@persist" "compress=zstd"];
+    options = ["noatime" "discard" "subvol=@snapshots" "compress=zstd"];
   };
 
   fileSystems."/home" = {
@@ -59,11 +40,16 @@
     options = ["noatime" "discard" "subvol=@home" "compress=zstd"];
   };
 
-  #  btrfs filesystem mkswapfile --size 16g --uuid clear /persist/swap
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vFat";
+  };
+
+  #  btrfs filesystem mkswapfile --size 96g --uuid clear /persist/swap
   swapDevices = [
     {
-      device = "/persist/swap";
-      size = 8 * 1024;
+      device = "/var/swapfile";
+      size = 96 * 1024;
     }
   ];
 }

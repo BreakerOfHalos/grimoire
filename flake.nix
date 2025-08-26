@@ -4,7 +4,6 @@
   outputs = inputs @ {
     nixpkgs, 
     lix-module,
-    hjem,
     zen-browser,
     ...
   }:

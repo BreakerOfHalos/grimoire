@@ -3,11 +3,11 @@
 , config
 , ... }:
 let
-  cfg = config.grimoire.gui;
+  cfg = config.grimoire.gui.niri;
 in
 {
-  options = {
-
+  options.grimoire = {
+    gui.niri.enable = lib.mkEnableOption "niri window manager";
   };
 
   config = lib.mkIf cfg.enable {
@@ -18,6 +18,9 @@ in
         defaultSession = "niri";
         sessionPackages = lib.mkForce [ pkgs.niri ];
       };
+
+      # We need something to manage idle, and hypridle seems fine.
+      hypridle.enable = true;
 
       gnome = {
         glib-networking.enable = true;
@@ -41,6 +44,16 @@ in
         pkgs.niri
         pkgs.xwayland-satellite
       ];
+    };
+
+    programs = {
+      # And a screen locker
+      hyprlock.enable = true;
+
+      waybar = {
+        enable = true;
+        systemd.target = "niri-session";
+      };
     };
 
     systemd = {

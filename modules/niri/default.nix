@@ -3,15 +3,15 @@
 , config
 , ... }:
 let
-  cfg = config.grimoire.gui.niri;
+  cfg = config.gui.niri;
 in
 {
-  options.grimoire = {
+  options = {
     gui.niri.enable = lib.mkEnableOption "niri window manager";
   };
 
   config = lib.mkIf cfg.enable {
-    # PAM settings in g/modules/nixos/security.nix
+    # PAM settings in g/system/security/security.nix
 
     services = {
       displayManager = {

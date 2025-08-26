@@ -58,13 +58,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      hjem = {
-        type = "github";
-        owner = "feel-co";
-        repo = "hjem";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
       zen-browser = {
         type = "github";
         owner = "youwen5";

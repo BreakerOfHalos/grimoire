@@ -51,6 +51,7 @@
         # pragmata-pro-fraktur
         # pragmata-pro-mono
         # sys-font
+        ;
     };
   };
 }

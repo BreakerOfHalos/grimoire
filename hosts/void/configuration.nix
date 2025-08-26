@@ -3,30 +3,22 @@
 , pkgs
 , ... }:
 {
-  imports = [
-    ../../modules
-    ./void-disk-config.nix
-  ];
+  gui.niri.enable = true;
 
-  networking.hostName = "void";
+  hardware = {
+    cpu.amd.updateMicrocode = true;
 
-  grimoire = {
-    profiles = {
-      graphical.enable = true;
-      # gaming.enable = true;
-    };
-
-    device.capabilities = {
-      yubikey = true;
-      tpm = true;
-     }; 
-
-    system = {
-      printing.enable = true;
-
-      boot.loader = "systemd-boot";
-    };
+    graphics = {
+      enable = true;
+      extraPackages = builtins.attrValues {
+        inherit (pkgs)
+          intel-compute-runtime
+          intel-media-driver
+          libva
+          libdpau-va-gl
+          vpl-gpu-rt
+          ;        
+      };
+    }; 
   };
-
-  facter.reportPath = ./facter.json;
 }

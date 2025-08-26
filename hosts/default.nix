@@ -16,8 +16,6 @@ let
 
           lix-module.nixosModules.default
 
-          hjem.nixosModules.default
-
           ./${name}
         ]
         ++ builtins.attrValues self.nixosModules;

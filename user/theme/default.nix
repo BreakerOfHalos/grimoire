@@ -66,10 +66,10 @@ pkgs:
 
   gtk = {
     enable = true;
-    packages = pkgs.tokyonight-gtk-theme.override {
-      colorVariant = [ "dark" ];
-      sizeVariant = [ "compact" ];
-      iconVariant = [ "Dark" ];
+    package = pkgs.tokyonight-gtk-theme.override {
+      colorVariants = [ "dark" ];
+      sizeVariants = [ "compact" ];
+      iconVariants = [ "Dark" ];
     };
     name = "Tokyonight";
     icon-name = "Tokyonight-Dark";

@@ -1,10 +1,17 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
   inherit (lib) mkIf mkDefault mkForce;
+  mkPub = host: key: {
+    "${host}-${key.type}" = {
+      hostNames = [ host ];
+      publicKey = "ssh-${key.type} ${key.key}";
+    };
+  };
   mkPubs = host: keys: lib.foldl' (acc: key: acc // mkPub host key) { } keys;
 in
 {

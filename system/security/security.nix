@@ -2,22 +2,6 @@
 , config
 , pkgs
 , ... }:
-let
-  services = [
-    "login"
-    "greetd"
-    "tuigreet"
-  ];
-
-  mkService = {
-    enableGnomeKeyring = true;
-    gnupg = {
-      enable = true;
-      noAutostart = true;
-      storeOnly = true;
-    };
-  };
-in
 {
   security.pam = {
     # fix "too many files open" errors while writing a lot of data at once
@@ -41,9 +25,34 @@ in
     # (e.g. hyprlock)
     services = {
       hyprlock.text = "auth include login";
-    };
 
-    services = lib.genAttrs services (_: mkService);
+      login = {
+        enableGnomeKeyring = true;
+        gnupg = {
+          enable = true;
+          noAutostart = true;
+          storeOnly = true;
+        };
+      };
+
+      greetd = {
+        enableGnomeKeyring =true;
+        gnupg = {
+          enable = true;
+          noAutostart = true;
+          storeOnly = true;
+        };
+      };
+
+      tuigreet = {
+        enableGnomeKeyring = true;
+        gnupg = {
+          enable = true;
+          noAutostart = true;
+          storeOnly = true;
+        };
+      };
+    };
   };
 
   security = {

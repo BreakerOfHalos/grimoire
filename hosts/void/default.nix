@@ -17,7 +17,7 @@
           intel-compute-runtime
           intel-media-driver
           libva
-          libdpau-va-gl
+          libvdpau-va-gl
           vpl-gpu-rt
           ;        
       };

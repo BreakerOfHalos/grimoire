@@ -1,13 +1,28 @@
-{ config
-, lib
-, options
-, pkgs
-, ... }: {
+{
+config,
+lib,
+options,
+pkgs,
+...
+}:
+{
+  nixpkgs.overlays = [ (final: prev: {
+    inherit (final.lixPackageSets.stable)
+      nixpkgs-review
+      nix-direnv
+      nix-eval-jobs
+      nix-fast-build
+      colmena
+      ; 
+  }) ];
+
   nix = {
     # Killing channels
     channel.enable = false;
 
-    nix.nixPath = [ "nixpkgs=/etc/nixos/nixpkgs" ];
+    package = pkgs.lixPackageSets.stable.lix;
+
+    nixPath = [ "nixpkgs=/etc/nixos/nixpkgs" ];
 
     # Automatic garbage collection, of course.
     gc = {

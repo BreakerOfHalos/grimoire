@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   nixpkgs.config = {
     allowInsecurePredicate =

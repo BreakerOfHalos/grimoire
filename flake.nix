@@ -3,8 +3,6 @@
 
   outputs = inputs @ {
     nixpkgs, 
-    lix-module,
-    zen-browser,
     ...
   }:
     let
@@ -28,7 +26,7 @@
           let
             pkgs = nixpkgs.legacyPackages.${system};
           in
-            pkg.nixfmt
+            pkgs.nixfmt
       );
 
       devShells = forAllSystems (
@@ -46,16 +44,11 @@
       }
       // import ./modules;
 
-      nixosCofigurations = import ./hosts inputs;
+      nixosConfigurations = import ./hosts inputs;
     };
 
     inputs = {
-      nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-
-      lix-module = {
-        url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
       zen-browser = {
         type = "github";
@@ -63,5 +56,5 @@
         repo = "zen-browser-flake";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-    }
+    };
 }

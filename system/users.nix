@@ -1,4 +1,5 @@
 { 
+  lib,
   config,
   flake,
   pkgs, 
@@ -15,6 +16,8 @@ in
     homix = true;
 
     home = "/home/breakerofhalos";
+
+    shell = pkgs.fish;
 
     extraGroups =
       [

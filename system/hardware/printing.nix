@@ -4,7 +4,7 @@
     printing = {
       enable = true;
 
-      drivers = attrValues {
+      drivers = builtins.attrValues {
         inherit (pkgs) 
           gutenprint
           hplip 

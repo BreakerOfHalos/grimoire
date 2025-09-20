@@ -1,5 +1,5 @@
 {
-  nixpgks,
+  nixpkgs,
   self,
   ...
 }:
@@ -13,8 +13,6 @@ let
             networking.hostName = name;
             nixpkgs.hostPlatform = system;
           }
-
-          lix-module.nixosModules.default
 
           ./${name}
         ]

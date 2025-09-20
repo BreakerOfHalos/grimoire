@@ -1,9 +1,5 @@
 {
-  imports = [
-    ./homix
-    ./laptop
-    ./niri
-    ./secure-boot
-    ./tailscale
-  ];
+  homix = import ./homix;
+  laptop = import ./laptop;
+  niri = import ./niri;
 }

@@ -22,6 +22,6 @@ in
         # also prevents failures from services that are restarted instead of stopped
         systemd-networkd.stopIfChanged = false;
         systemd-resolved.stopIfChanged = false;
-      }
+      };
   };
 }

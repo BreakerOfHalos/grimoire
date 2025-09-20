@@ -44,14 +44,14 @@
         noto-fonts-color-emoji
         material-icons
         material-design-icons
-      
 
-        nerd-fonts.symbols-only
         # pragmata-pro
         # pragmata-pro-fraktur
         # pragmata-pro-mono
         # sys-font
         ;
+
+      inherit (pkgs.nerd-fonts) symbols-only;
     };
   };
 }

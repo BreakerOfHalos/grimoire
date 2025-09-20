@@ -11,11 +11,11 @@
     # we set the kernel to be defaulted to the one set by our settings
     # we happen to default this to the latest kernel sooo:
     # always use the latest kernel, love the unstablity
-    kernelPackages = lib.mkOverride 500 cfg.kernel;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     # whether to enable support for Linux MD RAID arrays
     # as of 23.11>, this throws a warning if neither MAILADDR nor PROGRAM are set
-    swraid.enable = mkDefault false;
+    swraid.enable = false;
 
     # increase the map count, this is important for applications that require a lot of memory mappings
     # such as games and emulators

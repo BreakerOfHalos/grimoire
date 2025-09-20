@@ -48,7 +48,7 @@
       moonlight
       morgen
       mpv
-      nheko
+      #nheko
       obs-studio
       obsidian
       orca-slicer

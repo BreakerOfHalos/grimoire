@@ -31,6 +31,14 @@
 
       systemd.enable = true;
 
+      luks.devices = {
+        cryptroot = {
+          device = "/dev/disk/by-partlabel/luks";
+          allowDiscards = true;
+        };
+      };
+
+
       kernelModules = [
         "nvme"
         "xhci_pci"

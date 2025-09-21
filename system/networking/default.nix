@@ -16,7 +16,7 @@ let
 in
 {
   imports = [
-    ./optimise.nix
+    ./optimize.nix
     ./services.nix
     ./tcpcrypt.nix
   ];

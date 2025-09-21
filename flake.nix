@@ -2,7 +2,9 @@
   description = "Trying to be reasonable, and take things one step at a time.";
 
   outputs = inputs @ {
-    nixpkgs, 
+    nixpkgs,
+    disko,
+    nixos-facter-modules, 
     ...
   }:
     let
@@ -54,6 +56,20 @@
         type = "github";
         owner = "youwen5";
         repo = "zen-browser-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      nixos-facter-modules = {
+        type = "github";
+        owner = "numtide";
+        repo = "nixos-facter-modules";
+      };
+
+      disko = {
+        type = "github";
+        owner = "nix-community";
+        repo = "disko";
+        ref = "latest";
         inputs.nixpkgs.follows = "nixpkgs";
       };
     };

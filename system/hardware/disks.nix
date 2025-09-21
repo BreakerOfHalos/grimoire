@@ -1,55 +1,88 @@
-{ ... }:
 {
-  boot.initrd.luks.devices.luksroot = {
-    device = "/dev/disk/by-label/NIXCRYPT";
-    preLVM = true;
-    allowDiscards = true;
-    #    crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+  disko.devices = {
+    disk = {
+      main = {
+        type = "disk";
+        device = "/dev/nvme0n1";
+        
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "1G";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
+            };
+            
+            luks = {
+              size = "100%";
+              
+              content = {
+                type = "luks";
+                name = "cryptex";
+                
+                # disable settings.keyFile if you want to use interactive password entry
+                #passwordFile = "/tmp/secret.key"; # Interactive
+                settings = {
+                  allowDiscards = true;
+                  keyFile = "/tmp/secret.key";
+                };
+                
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  
+                  subvolumes = {
+                    "/root" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+
+                    "/media" = {
+                      mountpoit = "/media";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+
+                    "/swap" = {
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "32G";
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
   };
 
-  fileSystems."/" = {
-    neededForBoot = true;
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@root" "compress=zstd"];
-  };
-
-  fileSystems."/nix" = {
-    neededForBoot = true;
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@nix" "compress=zstd"];
-  };
-
-  fileSystems."/tmp" = {
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@tmp"];
-  };
-
-  fileSystems."/.snapshots" = {
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@snapshots" "compress=zstd"];
-  };
-
-  fileSystems."/home" = {
-    neededForBoot = true;
-    device = "/dev/disk/by-label/NIXROOT";
-    fsType = "btrfs";
-    options = ["noatime" "discard" "subvol=@home" "compress=zstd"];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vFat";
-  };
-
-  #  btrfs filesystem mkswapfile --size 96g --uuid clear /persist/swap
-  swapDevices = [
-    {
-      device = "/var/swapfile";
-      size = 96 * 1024;
-    }
-  ];
+  filesystem."/root".neededForBoot = true;
 }

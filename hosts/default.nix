@@ -13,6 +13,8 @@ let
             networking.hostName = name;
             nixpkgs.hostPlatform = system;
           }
+          
+          disko.nixosModules.disko
 
           ./${name}
         ]

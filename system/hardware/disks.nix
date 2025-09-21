@@ -63,7 +63,7 @@
                     };
 
                     "/media" = {
-                      mountpoit = "/media";
+                      mountpoint = "/media";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"

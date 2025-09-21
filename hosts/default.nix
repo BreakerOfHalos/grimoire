@@ -15,8 +15,8 @@ let
             config.facter.reportPath = "./${name}/facter.json";
           }
           
-          disko.nixosModules.disko
-          nixos-facter-modules.nixosModules.facter
+          inputs.disko.nixosModules.disko
+          #inputs.nixos-facter-modules.nixosModules.facter
 
           ./${name}
         ]

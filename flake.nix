@@ -4,7 +4,7 @@
   outputs = inputs @ {
     nixpkgs,
     disko,
-    nixos-facter-modules, 
+    # nixos-facter-modules, 
     ...
   }:
     let
@@ -59,11 +59,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      nixos-facter-modules = {
-        type = "github";
-        owner = "numtide";
-        repo = "nixos-facter-modules";
-      };
+      #nixos-facter-modules = {
+      #  type = "github";
+      #  owner = "numtide";
+      #  repo = "nixos-facter-modules";
+      #};
 
       disko = {
         type = "github";

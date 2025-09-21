@@ -55,6 +55,12 @@
 
       packages = builtins.attrValues { inherit (pkgs) dconf gcr udisks2; };
     };
+
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "weekly";
+      fileSystems = ["/"];
+    };
   };
 
   zramSwap = {

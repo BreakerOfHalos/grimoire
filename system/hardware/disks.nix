@@ -26,16 +26,13 @@
                 type = "luks";
                 name = "cryptex";
                 
-                # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
                   allowDiscards = true;
-                  keyFile = "/tmp/secret.key";
                 };
                 
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = [ "-L" "nixos" "-f" ];
                   
                   subvolumes = {
                     "/root" = {
@@ -84,5 +81,10 @@
     };
   };
 
-  filesystem."/root".neededForBoot = true;
+  swapDevices = [
+    {
+      device = "/.swapvol";
+      size = 32 * 1024; # Size in MB (32GB)
+    }
+  ];
 }

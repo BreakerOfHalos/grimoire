@@ -35,6 +35,7 @@
         cryptroot = {
           device = "/dev/disk/by-partlabel/luks";
           allowDiscards = true;
+          preLVM = true;
         };
       };
 

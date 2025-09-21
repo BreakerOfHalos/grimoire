@@ -19,6 +19,7 @@ rec
           (pkgs)
           fish
           helix
+          facter
           ;
       };
     };

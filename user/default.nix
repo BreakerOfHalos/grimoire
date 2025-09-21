@@ -19,7 +19,7 @@ rec
           (pkgs)
           fish
           helix
-          facter
+          nixos-facter
           ;
       };
     };

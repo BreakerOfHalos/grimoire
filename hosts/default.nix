@@ -12,7 +12,7 @@ let
           {
             networking.hostName = name;
             nixpkgs.hostPlatform = system;
-            config.facter.reportPath = "./${name}/facter.json";
+            #config.facter.reportPath = "./${name}/facter.json";
           }
           
           inputs.disko.nixosModules.disko

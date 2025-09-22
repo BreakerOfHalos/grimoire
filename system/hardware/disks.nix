@@ -83,7 +83,7 @@
 
   swapDevices = [
     {
-      device = "/.swapvol";
+      device = "/.swapvol/swapfile";
       size = 32 * 1024; # Size in MB (32GB)
     }
   ];

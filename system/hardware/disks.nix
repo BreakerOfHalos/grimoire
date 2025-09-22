@@ -21,7 +21,7 @@
             
             luks = {
               size = "100%";
-              
+              label = "luks";
               content = {
                 type = "luks";
                 name = "cryptex";
@@ -32,7 +32,7 @@
                 
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ];
+                  extraArgs = [ "-L" "nixos" "-f" ];
                   
                   subvolumes = {
                     "/root" = {

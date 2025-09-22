@@ -32,7 +32,7 @@
       systemd.enable = true;
 
       luks.devices = {
-        cryptroot = {
+        cryptex = {
           device = "/dev/disk/by-partlabel/luks";
           allowDiscards = true;
           #preLVM = true;

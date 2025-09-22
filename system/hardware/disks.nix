@@ -32,7 +32,7 @@
                 
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-L" "nixos" "-f" ];
+                  extraArgs = [ "-f" ];
                   
                   subvolumes = {
                     "/root" = {

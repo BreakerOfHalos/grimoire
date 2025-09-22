@@ -81,6 +81,8 @@
     };
   };
 
+  fileSystems."/".neededForBoot = true;
+
   swapDevices = [
     {
       device = "/.swapvol/swapfile";

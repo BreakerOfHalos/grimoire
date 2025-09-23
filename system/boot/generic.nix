@@ -53,8 +53,8 @@
       ];
 
       availableKernelModules = [
-        "cryptd"
-        "dm_crypt"
+        #"cryptd"
+        #"dm_crypt"
         "vmd"
         "usbhid"
         "sd_mod"
@@ -69,7 +69,7 @@
         "virtio_scsi"
         "ehci_pci"
       ]
-      ++ config.boot.initrd.luks.cryptoModules;
+      #++ config.boot.initrd.luks.cryptoModules;
 
       compressor = "zstd";
         compressorArgs = [

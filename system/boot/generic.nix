@@ -41,6 +41,7 @@
 
 
       kernelModules = [
+        "cryptd"
         "nvme"
         "xhci_pci"
         "ahci"

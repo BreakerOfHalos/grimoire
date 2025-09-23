@@ -1,15 +1,5 @@
 { lib, config, ... }:
-let
-  inherit (lib) mkIf mkEnableOption;
-
-  cfg = config.grimoire.system.networking;
-in
 {
-  options.grimoire.system.networking.optimizeTcp = mkEnableOption "Enable tcp optimizations" // {
-    default = true;
-  };
-
-  config = mkIf cfg.optimizeTcp {
     boot = {
       kernelModules = [
         "tls"
@@ -100,5 +90,4 @@ in
         "net.ipv4.udp_wmem_min" = 8192;
       };
     };
-  };
 }

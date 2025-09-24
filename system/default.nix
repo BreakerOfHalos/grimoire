@@ -5,7 +5,7 @@
     #./gaming
     ./hardware
     ./networking
-    ./security
+    #./security
     ./services
     ./core.nix
     ./fonts.nix

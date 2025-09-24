@@ -5,7 +5,7 @@
 }:
 {
   systemd = {
-    settings.Manager ={      
+    /* settings.Manager ={      
       DefaultTimeoutStartSec = "15s";
       DefaultTimeoutStopSec = "15s";
       DefaultTimeoutAbortSec = "15s";
@@ -17,7 +17,7 @@
       DefaultTimeoutStopSec=15s
       DefaultTimeoutAbortSec=15s
       DefaultDeviceTimeoutSec=15s
-    '';
+    ''; */
 
     services = {
       "getty@tty1".enable = false;
@@ -27,6 +27,8 @@
       "kmsconvt@tty1".enable = false;
       "kmsconvt@tty7".enable = false;
       "serial-getty@".environment.TERM = "xterm-256color";
+      NetworkManager-wait-online.enable = false;
+      nix-daemon.serviceConfig.OOMScoreAdjust = lib.mkDefault 350;
     };
 
     # Systemd OOMd
@@ -41,8 +43,6 @@
         "DefaultMemoryPressureDurationSec" = "20s";
       };
     };
-
-    services.nix-daemon.serviceConfig.OOMScoreAdjust = lib.mkDefault 350;
 
     tmpfiles.settings."10-oomd-root".w = {
       # Enables storing of the kernel log (including stack trace) into pstore upon a panic or crash.

@@ -10,6 +10,7 @@
       configurationLimit = 15;
       consoleMode = lib.mkDefault "max";
       editor = false;
+      memtest86.enable = true;
     };
 
     # if set to 0, space needs to be held to get the boot menu to appear

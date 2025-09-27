@@ -45,7 +45,6 @@
       _1password-gui
       flameshot
       ghostty
-      moonlight
       morgen
       mpv
       #nheko

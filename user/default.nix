@@ -67,6 +67,7 @@ rec
       ./packages.nix
       ./git.nix
       ./gtk
+      ./programs
     ];
   };
 }

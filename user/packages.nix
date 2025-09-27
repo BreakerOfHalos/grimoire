@@ -57,5 +57,6 @@
       vivaldi
       zathura
       ;
-  };
+  } 
+  ++ [inputs.zen-browser.packages.${pkgs.system}.default];
 }

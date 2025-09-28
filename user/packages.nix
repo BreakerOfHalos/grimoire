@@ -57,5 +57,9 @@
       zathura
       ;
   } 
-  ++ [inputs.zen-browser.packages.${pkgs.system}.default];
+  ++ [
+    inputs.zen-browser.packages.${pkgs.system}.default
+
+    (pkgs.discord.override { withMoonlight = true; })
+  ];
 }

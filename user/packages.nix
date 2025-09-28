@@ -34,6 +34,7 @@
       chezmoi
       fuzzel
       junction
+      mako
       megasync
       megatools
       mullvad-vpn

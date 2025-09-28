@@ -23,6 +23,7 @@
       discordo
       helix
       hyfetch
+      iamb
       imv
       yazi
       yt-dlp
@@ -45,12 +46,14 @@
       _1password-gui
       flameshot
       ghostty
+      librewolf
       morgen
       mpv
       #nheko
       obs-studio
       obsidian
       orca-slicer
+      qutebrowser
       signal-desktop
       unzip
       vivaldi

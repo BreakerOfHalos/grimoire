@@ -54,13 +54,6 @@
     inputs = {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-      zen-browser = {
-        type = "github";
-        owner = "youwen5";
-        repo = "zen-browser-flake";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
       #nixos-facter-modules = {
       #  type = "github";
       #  owner = "numtide";

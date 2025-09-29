@@ -54,7 +54,6 @@
       obs-studio
       obsidian
       orca-slicer
-      qutebrowser
       signal-desktop
       unzip
       vivaldi

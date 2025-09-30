@@ -60,6 +60,13 @@ rec
 
         # Pretty prompt
         starship.enable = true;
+
+        # Password management
+        _1password.enable = true;
+        _1password-gui = {
+          enable = true;
+          polkitPolicyOwners = [ "breakerofhalos" ];
+        };
       };
     };
 

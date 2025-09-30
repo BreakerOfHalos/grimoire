@@ -10,9 +10,16 @@
       bat
       btop
       eza
+      fd
+      ffmpeg-full
       fzf
+      imagemagick
+      jq
       nix-your-shell
       nushell
+      poppler
+      resvg
+      ripgrep
       starship
       tealdeer
       zoxide
@@ -21,6 +28,8 @@
       _1password-cli
       aerc
       discordo
+      feh
+      glow
       helix
       hyfetch
       iamb
@@ -33,7 +42,6 @@
       anyrun
       chezmoi
       fuzzel
-      junction
       mako
       megasync
       megatools
@@ -46,19 +54,27 @@
       # gui essentials
       _1password-gui
       flameshot
+      fluffychat
       ghostty
       librewolf
       morgen
       mpv
-      #nheko
       obs-studio
       obsidian
       orca-slicer
       signal-desktop
       unzip
-      vivaldi
       zathura
       ;
   } 
   ++ [(pkgs.discord.override { withMoonlight = true; })];
+
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        librewolf
+      '';
+      mode = "0755";
+    };
+  };
 }

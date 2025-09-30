@@ -10,12 +10,19 @@
 #   sys-font             = pkgs.callPackage ./sys-font {inherit pkgs;};
 # in
 {
+  environment.sessionVariables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofilter:no-stem-darkening=0";
   fonts = {
     
     fontconfig = {
       enable = true;
       hinting.enable = true;
       antialias = true;
+      defaultFonts = {
+        monospace = [ "Hack" "Noto Color Emoji" ];
+        sansSerif = [ "Lexend" "Noto Color Emoji" ];
+        serif = [ "Noto Serif" "Noto Color Emoji" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
     };
 
     fontDir = {
@@ -33,6 +40,14 @@
         dejavu_fonts
         inter
         lexend
+        roboto
+        work-sans
+        comic-neue
+        twemoji-color-font
+        comfortaa
+        lato
+        jost
+        hack-font
 
         noto-fonts
 

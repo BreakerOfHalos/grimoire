@@ -70,7 +70,7 @@ in
         XDG_RUNTIME_DIR
         ;
       PATH = [ "$bin" ];
-      EDITOR = [ "hx" ];
+      EDITOR = [ "helix" ];
     };
 
     sessionVariables = 

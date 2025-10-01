@@ -41,10 +41,11 @@
       age-plugin-1p
       anyrun
       chezmoi
+      cliphist
       fuzzel
       mako
+      megacmd
       megasync
-      megatools
       mullvad-vpn
       nil
       nixfmt
@@ -56,6 +57,7 @@
       flameshot
       fluffychat
       ghostty
+      keepassxc
       librewolf
       morgen
       mpv

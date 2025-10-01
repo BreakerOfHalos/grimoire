@@ -32,21 +32,21 @@
         commands = [
           # try to make nixos-rebuild work without password
           {
-            command = lib.getExe config.system.build.nixos-rebuild "nixos-rebuild";
+            command = lib.getExe' config.system.build.nixos-rebuild "nixos-rebuild";
             options = [ "NOPASSWD" ];
           }
 
           # allow reboot and shutdown without password
           {
-            command = lib.getExe pkgs.systemd "systemctl";
+            command = lib.getExe' pkgs.systemd "systemctl";
             options = [ "NOPASSWD" ];
           }
           {
-            command = lib.getExe pkgs.systemd "reboot";
+            command = lib.getExe' pkgs.systemd "reboot";
             options = [ "NOPASSWD" ];
           }
           {
-            command = lib.getExe pkgs.systemd "shutdown";
+            command = lib.getExe' pkgs.systemd "shutdown";
             options = [ "NOPASSWD" ];
           }
         ];

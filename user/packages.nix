@@ -66,7 +66,7 @@
       orca-slicer
       signal-desktop
       transmission_4-gtk
-      ungoogled-chromium
+      chromium
       unzip
       zathura
       ;

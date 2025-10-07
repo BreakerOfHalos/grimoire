@@ -65,6 +65,7 @@
       obsidian
       orca-slicer
       signal-desktop
+      transmission_4-gtk
       unzip
       zathura
       ;

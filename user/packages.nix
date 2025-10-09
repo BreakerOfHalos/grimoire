@@ -40,6 +40,7 @@
       # utilities
       age-plugin-1p
       anyrun
+      blueberry
       chezmoi
       cliphist
       fuzzel
@@ -49,11 +50,13 @@
       mullvad-vpn
       nil
       nixfmt
+      pavucontrol
       quickshell
       wl-clipboard
 
       # gui essentials
       _1password-gui
+      firefox
       flameshot
       fluffychat
       ghostty
@@ -66,7 +69,6 @@
       orca-slicer
       signal-desktop
       transmission_4-gtk
-      chromium
       unzip
       zathura
       ;

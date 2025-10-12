@@ -10,7 +10,7 @@
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "niri";
 
-      SDL_VIDEODRIVER = "wayland";
+      SDL_VIDEODRIVER = "wayland,x11";
 
       _JAVA_AWT_WM_NONREPARENTING = "1";
 

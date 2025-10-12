@@ -67,6 +67,18 @@ rec
           enable = true;
           polkitPolicyOwners = [ "breakerofhalos" ];
         };
+
+        # Gayming
+        steam = {
+          enable = true;
+          extraCompatPackages = [ pkgs.proton-ge-bin.steamcompattool ];
+          gamescopeSession.enable = true;
+        };
+
+        gamescope = {
+          enable = true;
+          capSysNice = true;
+        };
       };
     };
 

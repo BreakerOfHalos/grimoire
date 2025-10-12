@@ -79,8 +79,8 @@ rec
     #       enable = true;
     #       capSysNice = true;
     #     };
-    #   };
-    # };
+      };
+    };
 
     imports = [
       ./packages.nix

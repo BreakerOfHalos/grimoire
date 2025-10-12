@@ -34,6 +34,7 @@
       hyfetch
       iamb
       imv
+      spotify-player
       yazi
       yt-dlp
 
@@ -60,7 +61,7 @@
       flameshot
       fluffychat
       ghostty
-      keepassxc
+      libreoffice-fresh
       librewolf
       morgen
       mpv

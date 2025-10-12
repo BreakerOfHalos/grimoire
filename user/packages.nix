@@ -73,10 +73,11 @@
       spotify
       transmission_4-gtk
       unzip
+      vesktop
       zathura
       ;
-  } 
-  ++ [(pkgs.discord.override { withMoonlight = true; })];
+  }; 
+  # ++ [(pkgs.discord.override { withMoonlight = true; })];
 
   environment.etc = {
     "1password/custom_allowed_browsers" = {

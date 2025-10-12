@@ -52,6 +52,7 @@
       nil
       nixfmt
       pavucontrol
+      swaybg
       quickshell
       wl-clipboard
 

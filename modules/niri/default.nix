@@ -40,10 +40,14 @@ in
     };
 
     environment = {
-      systemPackages = [
-        pkgs.niri
-        pkgs.xwayland-satellite
-      ];
+      systemPackages = builtins.attrValues {
+        inherit (pkgs)
+        niri
+        xwayland-satellite
+        libnotify
+        xdg-utils
+        ;
+      };
     };
 
     programs = {
@@ -56,18 +60,24 @@ in
     };
 
     systemd = {
+      packages = [ pkgs.xwayland-satellite ];
       user = {
-        services.niri-flake-polkit = {
-          description = "PolicyKit Authentication Agent provided by niri-flake";
-          wantedBy = [ "niri.service" ];
-          after = [ "graphical-session.target" ];
-          partOf = [ "graphical-session.target" ];
-          serviceConfig = {
-            Type = "simple";
-            ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
+        targets = {
+          graphical-session.wants = [ "xwayland-satellite.service" ];
+        };
+        services = {
+          niri-flake-polkit = {
+            description = "PolicyKit Authentication Agent provided by niri-flake";
+            wantedBy = [ "niri.service" ];
+            after = [ "graphical-session.target" ];
+            partOf = [ "graphical-session.target" ];
+            serviceConfig = {
+              Type = "simple";
+              ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+              Restart = "on-failure";
+              RestartSec = 1;
+              TimeoutStopSec = 10;
+            };
           };
         };
       };

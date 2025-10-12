@@ -1,15 +1,8 @@
 { lib
 ,  config
 ,  ... }:
-let
-  cfg = config.grimoire.profiles.gaming.gamemode;
-in
 {
-  options.grimoire.profiles.gaming.gamemode.enable = lib.mkEnableOption "Gamemode" // {
-    default = config.grimoire.profiles.gaming.enable;
-  };
-
-  config.programs.gamemode = lib.mkIf cfg.enable {
+  programs.gamemode = {
     enable = true;
     enableRenice = true;
 

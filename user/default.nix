@@ -72,7 +72,7 @@ rec
         steam = {
           enable = true;
           extraCompatPackages = [ pkgs.proton-ge-bin.steamcompattool ];
-          gamescopeSession.enable = true;
+          gamescopeSession.enable = false;
         };
 
         gamescope = {

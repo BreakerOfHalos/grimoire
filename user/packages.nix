@@ -69,6 +69,7 @@
       obsidian
       orca-slicer
       signal-desktop
+      spotify
       transmission_4-gtk
       unzip
       zathura

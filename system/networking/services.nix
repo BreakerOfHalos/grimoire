@@ -1,7 +1,4 @@
 { lib, ... }:
-let
-
-in
 {
   services = {
     opensnitch.enable = true;

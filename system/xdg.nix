@@ -52,7 +52,7 @@ let
     // (lib.genAttrs images (_: [ "feh.desktop" ]))
     // (lib.genAttrs browser (_: [ "librewolf.desktop" ]))
     // {
-      #"x-scheme-handler/spotify" = [ "spotify.desktop" ];
+      "x-scheme-handler/spotify" = [ "spotify.desktop" ];
       "x-scheme-handler/discord" = [ "Discord.desktop" ];
       "inode/directory" = [ "nautilus.desktop" ];
       "application/pdf" = [ "zathura.desktop" ];

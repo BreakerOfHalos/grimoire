@@ -7,6 +7,8 @@
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
       # shell tools
+      android-tools
+      android-udev-rules
       bat
       btop
       eza

@@ -36,7 +36,9 @@
       hyfetch
       iamb
       imv
+      manga-tui
       spotify-player
+      vhs
       yazi
       yt-dlp
 

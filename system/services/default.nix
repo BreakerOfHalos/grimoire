@@ -5,6 +5,7 @@
     ./geoclue.nix
     ./greetd.nix
     ./seatd.nix
+    ./syncthing.nix
   ];
 
   services = {

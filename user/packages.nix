@@ -80,7 +80,8 @@
       vesktop
       zathura
       ;
-  } ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ]; 
+  };
+  # ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ]; 
 
   environment.etc = {
     "1password/custom_allowed_browsers" = {

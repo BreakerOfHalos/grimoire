@@ -19,14 +19,13 @@ rec
           (pkgs)
           fish
           helix
-          nixos-facter
           ;
       };
     };
 
   module = { pkgs, ... }: {
     config = {
-      environment.systemPackages = builtins.attrValues (packages pkgs);
+      # environment.systemPackages = builtins.attrValues (packages pkgs);
       
       programs = {
         fish.enable = true;

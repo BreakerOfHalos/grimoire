@@ -62,10 +62,12 @@
 
       # gui essentials
       _1password-gui
+      blender
       firefox
       flameshot
       fluffychat
       ghostty
+      keepassxc
       libreoffice-fresh
       librewolf
       morgen
@@ -76,6 +78,7 @@
       signal-desktop
       spotify
       transmission_4-gtk
+      ungoogled-chromium
       unzip
       vesktop
       zathura

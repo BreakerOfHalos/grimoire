@@ -9,14 +9,27 @@
       # shell tools
       android-tools
       android-udev-rules
+      bandwhich
       bat
+      bluetui
+      bottom
       btop
+      csview
+      delta
+      dust
+      eva
       eza
       fd
       ffmpeg-full
       fzf
+      gfold
+      git-crypt
+      git-journal
+      gitui
+      gping
       imagemagick
       jq
+      lnav
       nix-your-shell
       nushell
       poppler
@@ -29,6 +42,7 @@
       # cli/tui programs
       _1password-cli
       aerc
+      dijo
       discordo
       feh
       glow
@@ -36,7 +50,10 @@
       hyfetch
       iamb
       imv
+      lemmeknow
+      lf
       manga-tui
+      mdcat
       spotify-player
       vhs
       yazi

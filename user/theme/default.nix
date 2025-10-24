@@ -51,11 +51,6 @@ pkgs:
   wallpaper = "./wallpapers/luciferin.png";
 
   cursor = {
-    hypr = {
-      package = pkgs.nordzy-cursor-theme;
-      name = "Nordzy-hyprcursors";
-    };
-
     x = {
       package = pkgs.nordzy-cursor-theme;
       name = "Nordzy-cursors";
@@ -71,7 +66,7 @@ pkgs:
       sizeVariants = [ "compact" ];
       iconVariants = [ "Dark" ];
     };
-    name = "Tokyonight";
+    name = "Tokyonight-Dark-Compact";
     icon-name = "Tokyonight-Dark";
   };
 }

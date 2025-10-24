@@ -75,11 +75,13 @@ in
     in {
       GTK_THEME = gtk-theme-name;
       GSK_RENDERER="gl";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_QPA_PLATFORMTHEME = "gtk3";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      DISABLE_QT_COMPAT = "0";
+      
       XCURSOR_THEME = theme.cursor.x.name;
       XCURSOR_SIZE = cursorSize;
-
-      HYPRCURSOR_THEME = theme.cursor.hypr.name;
-      HYPRCURSOR_SIZE = cursorSize;
     };
   };
 }

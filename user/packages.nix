@@ -80,13 +80,13 @@
       vesktop
       zathura
       ;
-  }; 
-  # ++ [(pkgs.discord.override { withMoonlight = true; })];
+  } ++ [ inputs.helium-browser.packages."${pkgs.system}".helium ]; 
 
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
         librewolf
+        helium
       '';
       mode = "0755";
     };

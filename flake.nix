@@ -60,6 +60,13 @@
       #  repo = "nixos-facter-modules";
       #};
 
+      helium-browser = {
+        type = "github";
+        owner = "ominit";
+        repo = "helium-browser-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       disko = {
         type = "github";
         owner = "nix-community";

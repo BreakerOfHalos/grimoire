@@ -24,7 +24,6 @@
       fzf
       gfold
       git-crypt
-      git-journal
       gitui
       gping
       imagemagick

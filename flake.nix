@@ -14,7 +14,8 @@
         "aarch64-linux"
         "x86_64-linux"
       ];
-    in {
+    in
+    {
       packages = forAllSystems (
         system:
           let

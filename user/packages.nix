@@ -15,16 +15,12 @@
       bottom
       btop
       csview
-      delta
       dust
       eva
       eza
       fd
       ffmpeg-full
       fzf
-      gfold
-      git-crypt
-      gitui
       gping
       imagemagick
       jq
@@ -37,6 +33,13 @@
       starship
       tealdeer
       zoxide
+
+      # git tools
+      delta
+      gfold
+      git-crypt
+      gitui
+      lazygit
 
       # cli/tui programs
       _1password-cli

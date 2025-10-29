@@ -8,7 +8,7 @@
     inherit (pkgs)
       # shell tools
       android-tools
-      android-udev-rules
+      # android-udev-rules
       bandwhich
       bat
       bluetui

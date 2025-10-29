@@ -13,5 +13,6 @@
   # Yubico's official tools
   environment.systemPackages = [
     pkgs.yubikey-manager # cli
+    pkgs.libfido2
   ]; 
 }

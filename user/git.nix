@@ -9,9 +9,9 @@
     lfs.enable = true;
     config = {
       user = {
-        email = "me@breakerofhalos.monster";
+        email = "thin.road5750@fastmail.com";
         name = "breakerofhalos";
-        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQ53dGhZQR+Pe1Wy7kTk72V7RzcPsYoHKMI0AzYgx4y";
+        signingkey = "~/.ssh/id_ed25519_sk_git_signing.pub";
       };
       
       init = {
@@ -39,7 +39,7 @@
       };
 
       gpg.format = "ssh";
-      gpg."ssh".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       commit.gpgsign = "true";
 
       branch.autosetupmerge = "true";

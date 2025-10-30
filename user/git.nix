@@ -40,7 +40,6 @@
 
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      commit.gpgsign = "true";
 
       branch.autosetupmerge = "true";
       push.default = "current";

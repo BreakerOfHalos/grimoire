@@ -100,6 +100,7 @@
       ungoogled-chromium
       unzip
       vesktop
+      vscode-fhs
       zathura
       ;
   }

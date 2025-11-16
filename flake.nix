@@ -72,7 +72,7 @@
       };
 
       hjem-impure = {
-        url = "githup:Rexcrazy804/hjem-impure";
+        url = "github:Rexcrazy804/hjem-impure";
         inputs.nixpkgs.follows = "";
         inputs.hjem.follows = "";
       };

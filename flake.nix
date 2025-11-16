@@ -66,6 +66,17 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      hjem = {
+        url = "github:feel-co/hjem";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      hjem-impure = {
+        url = "githup:Rexcrazy804/hjem-impure";
+        inputs.nixpkgs.follows = "";
+        inputs.hjem.follows = "";
+      };
+
       disko = {
         type = "github";
         owner = "nix-community";

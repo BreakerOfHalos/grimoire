@@ -51,11 +51,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1761337656,
-        "narHash": "sha256-UQmqlrmpN6R3WOQMcvHNfuveftPhg8uhAbCe9ijTMcI=",
+        "lastModified": 1762608461,
+        "narHash": "sha256-+TNPqE/Rlk0bIa7fTzGb03k+EGgM7TXo2j80n/X8aok=",
         "owner": "ominit",
         "repo": "helium-browser-flake",
-        "rev": "90ec70f402ae26e9d78c9ea8980d44d59426ce9b",
+        "rev": "994bdd5026718f3d716e25ffafad3b3dd6afe6b2",
         "type": "github"
       },
       "original": {
@@ -64,13 +64,53 @@
         "type": "github"
       }
     },
+    "hjem": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "smfh": "smfh"
+      },
+      "locked": {
+        "lastModified": 1762758514,
+        "narHash": "sha256-KYaXX2se/TvDMulDmISeKLKmEVunp3aMe279zKzcIxA=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "65c39c7aeb96742aa5866005842b3a95446d210c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "feel-co",
+        "repo": "hjem",
+        "type": "github"
+      }
+    },
+    "hjem-impure": {
+      "inputs": {
+        "hjem": [],
+        "nixpkgs": []
+      },
+      "locked": {
+        "lastModified": 1761137035,
+        "narHash": "sha256-addwMZGxcaOjvg64AXfWsXsXinxzjSS8x8h/CENOU6U=",
+        "owner": "Rexcrazy804",
+        "repo": "hjem-impure",
+        "rev": "9a58b060e9383bfb6b2b3470f9606fdd654469f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Rexcrazy804",
+        "repo": "hjem-impure",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1761373498,
-        "narHash": "sha256-Q/uhWNvd7V7k1H1ZPMy/vkx3F8C13ZcdrKjO7Jv7v0c=",
+        "lastModified": 1762977756,
+        "narHash": "sha256-4PqRErxfe+2toFJFgcRKZ0UI9NSIOJa+7RXVtBhy4KE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6a08e6bb4e46ff7fcbb53d409b253f6bad8a28ce",
+        "rev": "c5ae371f1a6a7fd27823bc500d9390b38c05fa55",
         "type": "github"
       },
       "original": {
@@ -84,7 +124,69 @@
       "inputs": {
         "disko": "disko",
         "helium-browser": "helium-browser",
+        "hjem": "hjem",
+        "hjem-impure": "hjem-impure",
         "nixpkgs": "nixpkgs"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "hjem",
+          "smfh",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759113356,
+        "narHash": "sha256-xm4kEUcV2jk6u15aHazFP4YsMwhq+PczA+Ul/4FDKWI=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "be3b8843a2be2411500f6c052876119485e957a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "smfh": {
+      "inputs": {
+        "nixpkgs": [
+          "hjem",
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay",
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1760525934,
+        "narHash": "sha256-1HtxuA45R/jExzE9iuimuECHWbV2c+CBdJmr/RtluaI=",
+        "owner": "feel-co",
+        "repo": "smfh",
+        "rev": "7123a00cc3c3e90ba703a37ca8d997be95c62d99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "feel-co",
+        "repo": "smfh",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     },
     "treefmt-nix": {
